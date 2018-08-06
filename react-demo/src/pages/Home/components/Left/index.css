@@ -1,0 +1,30 @@
+.left {
+    min-height: calc(100vh - 120px);
+    flex: 0 0 50%;
+    border-right: 2px solid rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.left button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 200px;
+    height: 60px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.left .game {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 300px;
+    height: 100px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
