@@ -4,7 +4,7 @@ class API extends Server{
     async uploadImg(params={}){
         try{
             let result = await this.axios("post", "//elm.cangdu.org/v1/addimg/shop");
-            if(result  && result.status == 1){
+            if(result  && result.status === 1){
                 return result;
             }
             else{
