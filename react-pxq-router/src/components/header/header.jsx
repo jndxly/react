@@ -47,12 +47,12 @@ export default class PublicHeader extends Component{
             <ReactCSSTransitionGroup
                 component={this.FirstChild}
                 transitionName="nav" //transitionName属性定义了class的前缀
-                transitionEnterTimeout={300}
-                transitionLeaveTimeout={300} >
+                transitionEnterTimeout={9000}
+                transitionLeaveTimeout={9000} >
                 {
                     this.state.navState && <aside key="nav-slide" className="nav-slide-list" onClick={this.toggleNav}>
                         <NavLink to="/" exact className="nav-link icon-jiantou-copy-copy">首页</NavLink>
-                        <NavLink to="/" exact className="nav-link icon-jiantou-copy-copy">提现</NavLink>
+                        <NavLink to="/balance" exact className="nav-link icon-jiantou-copy-copy">提现</NavLink>
                         <NavLink to="/" exact className="nav-link icon-jiantou-copy-copy">帮助中心</NavLink>
                     </aside>
                 }

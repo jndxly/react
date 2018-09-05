@@ -5,9 +5,11 @@ export default function asyncComponent(importComponent){
         constructor(props){
             super(props);
 
-            this.state = {
-                component:null
-            }
+
+        }
+
+        state = {
+            component:null
         }
 
         async componentDidMount(){
@@ -21,6 +23,8 @@ export default function asyncComponent(importComponent){
             return C? <C {...this.props}/>:null;
         }
     }
+
+    return AsyncComponent;
 
 
 }
