@@ -1,0 +1,44 @@
+@import (reference) "../../styles/mixin";
+@import "../../assets/iconfonts/iconfont.css";
+
+.pro-list-con{
+  margin-top: @common-wd;
+
+  .pro-item{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .pro-item-select{
+      text-align: left;
+      .pro-item-select{
+        .font(45px, #ccc);
+      }
+      .pro-selected{
+        color:@base-color;
+      }
+      .pro-name{
+        .font(36px);
+        margin-left:20px;
+        margin-top:12px;
+      }
+    }
+
+    .pro-item-edit{
+      .flex;
+      .icon-jian{
+        .font(50px, #ccc)
+      }
+      .icon-jia{
+        .font(50px, @base-color)
+      }
+      .pro-num{
+        .font(30px,  center);
+      }
+      .edit-active{
+        color:@base-color
+      }
+    }
+  }
+
+}

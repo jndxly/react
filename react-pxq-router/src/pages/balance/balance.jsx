@@ -63,6 +63,7 @@ class BrokeRage extends Component{
         })
     }
 
+
     componentDidMount(){
         this.initData();
     }
