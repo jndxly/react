@@ -1,4 +1,4 @@
 {
-  "presets": ["react"],
-  "plugins": ["syntax-dynamic-import"]
+  "presets": ["react-app"],
+  "plugins": [["syntax-dynamic-import"]]
 }

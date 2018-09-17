@@ -6,7 +6,7 @@ import RecordList from './components/RecordList';
 import './record.less';
 
 
-class Record extends Component{
+export default class Record extends Component{
 
     state = {
         flagBarPos:'17%'

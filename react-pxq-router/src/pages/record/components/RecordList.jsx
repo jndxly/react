@@ -3,7 +3,7 @@ import {is, fromJS} from 'immutable';
 import API from '@/api/api';
 import './recordList.less';
 
-class RecordList extends Component{
+export default class RecordList extends Component{
 
     state = {
         recordData :[]
@@ -11,13 +11,13 @@ class RecordList extends Component{
 
     getRecord = async type => {
         try{
-            let result = await API.getRecord();
+            let result = await API.getRecord({type});
             this.setState({
                 recordData : result.data || []
             });
         }
         catch (e) {
-            console.log(err)
+            console.log(e)
         }
     }
 

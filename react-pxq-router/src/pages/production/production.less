@@ -1,44 +1,45 @@
-@import (reference) "../../styles/mixin";
+@import (reference) "../../styles/mixin.less";
 @import "../../assets/iconfonts/iconfont.css";
 
 .pro-list-con{
-  margin-top: @common-wd;
-
+  padding-top: @common-wd;
+}
+.pro-list-ul{
+  background-color: #fff;
   .pro-item{
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-
+    min-height: 140px;
+    padding: @common-wd;
+    border-bottom: 1PX solid #eee;
+    .flex(space-between);
     .pro-item-select{
-      text-align: left;
-      .pro-item-select{
+      .flex;
+      .pro-select-status{
         .font(45px, #ccc);
       }
       .pro-selected{
-        color:@base-color;
+        color: @base-color;
       }
       .pro-name{
         .font(36px);
-        margin-left:20px;
-        margin-top:12px;
+        margin-left: 20px;
+        margin-top: 12px;
       }
     }
-
     .pro-item-edit{
       .flex;
       .icon-jian{
-        .font(50px, #ccc)
-      }
-      .icon-jia{
-        .font(50px, @base-color)
+        .font(50px, #ccc);
       }
       .pro-num{
-        .font(30px,  center);
+        .font(30px, @text-align: center);
+        min-width: 60px;
+      }
+      .icon-jia{
+        .font(50px, @base-color);
       }
       .edit-active{
-        color:@base-color
+        color: @base-color;
       }
     }
   }
-
 }

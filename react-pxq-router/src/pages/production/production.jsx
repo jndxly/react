@@ -1,8 +1,10 @@
 import React,{Component} from 'react';
-import {is, formJS} from 'immutable';
+import {is, fromJS} from 'immutable';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import {getProData, togSelectPro, editPro} from "../../store/production/action";
 import PublicHeader from '../../components/header/header';
+import './production.less';
 
 
 class Production extends Component{
@@ -41,7 +43,7 @@ class Production extends Component{
     render(){
         
         return (
-            <main>
+            <main className="common-con-top">
                 <PublicHeader title="首页" confirm />
                 <section className="pro-list-con">
                     <ul className="pro-list-ul">
@@ -53,9 +55,9 @@ class Production extends Component{
                                         <span className="pro-name">{item.product_name}</span>
                                     </div>
                                     <div className="pro-item-edit">
-                                        <span className="icon-jian" onClick={this.handleEdit.bind(this, -1)}></span>
+                                        <span className="icon-jian" onClick={this.handleEdit.bind(this,index,  -1)}></span>
                                         <span className="pro-num">{item.selectNum}</span>
-                                        <span className="icon-jia" onClick={this.handleEdit(this, 1)}></span>
+                                        <span className="icon-jia" onClick={this.handleEdit.bind(this, index,1)}></span>
                                     </div>
 
                                 </li>
@@ -70,3 +72,11 @@ class Production extends Component{
     }
 
 }
+
+export default connect(state => ({
+    proData: state.proData,
+}), {
+    getProData,
+    togSelectPro,
+    editPro
+})(Production);

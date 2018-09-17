@@ -96,7 +96,10 @@ class Home extends Component{
   initData = props =>{
    this.selectedProList = [];
    props.proData.dataList.forEach(item =>{
-    this.selectedProList.push(item)
+       if(item.selectStatus && item.selectNum){
+           this.selectedProList.push(item)
+       }
+
    })
   }
 
