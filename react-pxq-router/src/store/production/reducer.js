@@ -20,7 +20,7 @@ export const proData = (state = defaultState, action = {}) => {
             return {...state, ...{dataList:imuDataList.toJS()}};
         case pro.EDITPRODUCTION:
             imuDataList = Immutable.List(state.dataList);
-            imuItem.map(state.dataList[action.index]);
+            imuItem = Immutable.Map(state.dataList[action.index]);
             imuItem = imuItem.set('selectNum', action.selectNum);
             imuDataList = imuDataList.set(action.index, imuItem);
             return {...state, ...{dataList: imuDataList.toJS()}}

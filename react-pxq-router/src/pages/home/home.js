@@ -96,7 +96,10 @@ class Home extends Component{
   initData = props =>{
    this.selectedProList = [];
    props.proData.dataList.forEach(item =>{
-    this.selectedProList.push(item)
+       if(item.selectStatus && item.selectNum){
+           this.selectedProList.push(item)
+       }
+
    })
   }
 
@@ -135,7 +138,7 @@ class Home extends Component{
               </form>
               <div>
                   <p className="common-title">请选择销售的产品</p>
-                  <Link to="/" className="common-select-btn">
+                  <Link to="/production" className="common-select-btn">
                       {
                           this.selectedProList.length? <ul className="selected-pro-list">
                               {
