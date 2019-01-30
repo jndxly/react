@@ -1,0 +1,209 @@
+@charset "UTF-8";
+.numbers {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: calc(100% - 70px);
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+
+.grouplist {
+  position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 240px;
+  min-height: 600px;
+  -webkit-transition: left 0.5s ease-in-out;
+  -o-transition: left 0.5s ease-in-out;
+  transition: left 0.5s ease-in-out;
+  padding-top: 50px;
+  background-color: #6f6dd8;
+}
+
+.grouplist h3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  font-family: '微软雅黑';
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  letter-spacing: 0px;
+  color: #fff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.addgroup {
+  position: absolute;
+  width: 40px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  color: #fff;
+}
+
+.addgroup:hover {
+  color: #84d476;
+}
+
+.group-items {
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow: auto;
+}
+
+.group-item {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  line-height: 40px;
+  padding: 5px 65px 5px 10px;
+  cursor: pointer;
+  margin: 5px 0;
+  color: #fff;
+  text-align: left;
+}
+
+.group-item b {
+  font-weight: normal;
+}
+
+.group-item:hover, .group-item.current-group {
+  background-color: #fff;
+  color: #6f6dd8;
+}
+
+.group-item:hover .group-delete, .group-item.current-group .group-delete, .group-item:hover .group-edit, .group-item.current-group .group-edit {
+  display: block;
+}
+
+.group-delete {
+  position: absolute;
+  width: 26px;
+  height: 50px;
+  line-height: 50px;
+  top: 0;
+  right: 0;
+  text-align: center;
+  display: none;
+}
+
+.group-edit {
+  position: absolute;
+  width: 26px;
+  height: 50px;
+  line-height: 50px;
+  top: 0;
+  right: 26px;
+  text-align: center;
+  display: none;
+}
+
+.group-delete:hover {
+  background-color: #ff5e5e;
+  color: #fff;
+}
+
+.group-edit:hover {
+  background-color: #84d476;
+  color: #fff;
+}
+
+.numeditor {
+  width: 784px;
+  height: 100%;
+  overflow: auto;
+  padding: 5px 15px;
+}
+
+.editorhead {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+}
+
+.editorhead p {
+  display: inline-block;
+  width: 650px;
+  line-height: 40px;
+  color: #888;
+}
+
+.num-delete, .num-edit {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+
+.num-delete:hover {
+  background-color: #ff5e5e;
+  color: #fff;
+}
+
+.num-edit:hover {
+  background-color: #84d476;
+  color: #fff;
+}
+
+.editorbox {
+  position: fixed;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.numbox, .groupbox {
+  padding: 20px;
+  border-radius: 4px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.numbox .form-control, .groupbox .form-control {
+  width: 140px;
+}
+
+.numbox table, .groupbox table {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.numeditor thead td {
+  font-weight: bold;
+}
+
+.numeditor td {
+  width: 100px;
+  height: 30px;
+  text-align: center;
+}
+

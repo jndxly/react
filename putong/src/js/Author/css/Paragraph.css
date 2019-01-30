@@ -1,0 +1,120 @@
+.canvas {
+  display: -ms-flexbox;
+  display: flex;
+  background: #fff;
+}
+
+.toolmenu {
+  position: absolute;
+  top: 57px;
+  left: 20px;
+  width: 40px;
+  background-color: #fff;
+  color: #888;
+  border: 1px solid #e5e5e5;
+  z-index: 50;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.toolitem {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.toolitem:hover {
+  background-color: #6f6dd8;
+  color: #fff;
+}
+
+.toolitem:active {
+  background-color: #5856b8;
+}
+
+.searchbanner {
+  position: absolute;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  height: 50px;
+  border: 1px solid #e5e5e5;
+  top: 5px;
+  left: 20px;
+  padding: 0 20px 0 40px;
+  border-radius: 4px;
+  z-index: 200;
+  background-color: #fff;
+}
+
+.searchbanner .form-control {
+  margin-right: 20px;
+  max-width: 180px;
+}
+
+.searchicon {
+  position: absolute;
+  top: 15px;
+  left: 22px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: #888;
+  font-size: 20px;
+  z-index: 201;
+  cursor: pointer;
+}
+
+.searchicon:hover {
+  color: #84d476;
+}
+
+.searchicon:active {
+  color: #70b863;
+}
+
+.search-btn {
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background-color: #84d476;
+  border-radius: 4px;
+  margin-right: 20px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background-color: #70b863;
+}
+
+.search-btn:active {
+  background-color: #84d476;
+}
+
+.searchup, .searchdown {
+  display: inline-block;
+  width: 24px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 24px;
+  margin-left: 15px;
+  color: #6f6dd8;
+  cursor: pointer;
+}
+
+.searchup:hover, .searchdown:hover {
+  color: #5856b8;
+}
+
+.searchup:active, .searchdown:active {
+  color: #6f6dd8;
+}
+

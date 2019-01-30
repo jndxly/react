@@ -1,0 +1,77 @@
+#uploadbox1 {
+    position: relative;
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    margin: 5px 0;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+#uploadbox1 img {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    top: 0;
+    left: 0;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 3;
+}
+
+#uploadbox2 {
+    position: relative;
+    display: inline-block;
+    width: 108px;
+    height: 192px;
+    margin: 5px 0;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+#uploadbox2 img {
+    position: absolute;
+    width: 108px;
+    height: 192px;
+    top: 0;
+    left: 0;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.upload {
+    position: absolute;
+    top: -100px;
+    left: -100px;
+    width: 0px;
+    height: 0px;
+    outline: none;
+}
+
+.uploadinfo {
+    width: 100%;
+    height: 100%;
+    background-color: #e5e5e5;
+    background-size: 100% 100%;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.icon-ok {
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    line-height: 120px;
+    font-size: 60px;
+    text-align: center;
+    color: #84d476;
+}
+
+.uploadinfo p {
+    width: 100%;
+    padding: 10px;
+    line-height: 20px;
+}

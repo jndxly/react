@@ -1,0 +1,281 @@
+@charset "UTF-8";
+.roles {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: calc(100% - 70px);
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+
+.btn-blue-s.newrole-none {
+  margin: 20px 0;
+}
+
+.rolelist {
+  position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 240px;
+  min-height: 600px;
+  -webkit-transition: left 0.5s ease-in-out;
+  -o-transition: left 0.5s ease-in-out;
+  transition: left 0.5s ease-in-out;
+  padding-top: 50px;
+  background-color: #6f6dd8;
+}
+
+.rolelist h3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  font-family: '微软雅黑';
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  letter-spacing: 0px;
+  color: #fff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.addrole {
+  position: absolute;
+  width: 40px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  color: #fff;
+}
+
+.addrole:hover {
+  color: #84d476;
+}
+
+.role-items {
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow: auto;
+}
+
+.role-item {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  line-height: 40px;
+  padding: 5px 5px 5px 60px;
+  cursor: pointer;
+  margin: 5px 0;
+  color: #fff;
+  text-align: left;
+}
+
+.role-item b {
+  font-weight: normal;
+}
+
+.role-item:hover, .role-item.current-role {
+  background-color: #fff;
+  color: #6f6dd8;
+}
+
+.role-item:hover .role-delete, .role-item.current-role .role-delete {
+  display: block;
+}
+
+.role-photo {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+
+.role-delete {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  top: 5px;
+  right: 5px;
+  text-align: center;
+  display: none;
+}
+
+.roleseditor {
+  width: calc(100% - 240px);
+  padding: 10px 20px;
+  height: 100%;
+  text-align: left;
+  overflow: auto;
+}
+
+.animations {
+  width: 100%;
+}
+
+.animation {
+  border: 1px solid #e5e5e5;
+  border-radius: 2px;
+  margin-top: 5px;
+}
+
+.animation-title {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.animation-title.current {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.delete-animation {
+  position: absolute;
+  width: 60px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  top: 5px;
+  right: 5px;
+  color: #ff5d5e;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+.delete-animation:hover {
+  background-color: #ff5d5e;
+  color: #fff;
+}
+
+.animation-body {
+  width: 100%;
+  padding: 10px;
+}
+
+.add-frame {
+  width: 100%;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  border: 1px solid #e5e5e5;
+  border-radius: 2px;
+  color: #6f6dd8;
+  cursor: pointer;
+}
+
+.add-frame:hover {
+  color: #fff;
+  background-color: #6f6dd8;
+}
+
+.delete-frame {
+  position: relative;
+  top: 40px;
+  right: 20px;
+  font-size: 22px;
+  color: #ff5d5e;
+  cursor: pointer;
+}
+
+.frame-group {
+  width: 120px;
+  margin: 5px 0;
+  color: #888;
+}
+
+.interval {
+  margin: 5px 0;
+  color: #888;
+}
+
+.interval .form-control {
+  width: 58px;
+  margin: 0 3px;
+}
+
+.frame-group .form-control {
+  width: 58px;
+  margin: 0 3px;
+}
+
+.frameimgs {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 600px;
+}
+
+.img-group {
+  position: relative;
+  width: 120px;
+  margin-right: 10px;
+}
+
+.delete-img {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  text-align: center;
+  cursor: pointer;
+  color: #ff5d5e;
+  font-size: 20px;
+  z-index: 10;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.add-img {
+  width: 30px;
+  height: 130px;
+  line-height: 130px;
+  text-align: center;
+  cursor: pointer;
+  color: #888;
+  font-size: 24px;
+  margin-left: 10px;
+}
+
+.add-img:hover {
+  color: #6f6dd8;
+}
+
+.add-animation {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: #888;
+  font-size: 20px;
+  border: 1px solid #e5e5e5;
+  border-radius: 2px;
+  cursor: pointer;
+  margin: 5px 0;
+}
+
+.add-animation:hover {
+  color: #fff;
+  background-color: #6f6dd8;
+}

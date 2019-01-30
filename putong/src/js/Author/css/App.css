@@ -1,0 +1,171 @@
+#root {
+    width: 100%;
+    height: 100%;
+}
+
+.main {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.flex-1 {
+    -ms-flex: 1 0 0px;
+    flex: 1 0;
+}
+
+.flex-2 {
+    -ms-flex: 2 0 0px;
+    flex: 2 0;
+}
+
+.flex-3 {
+    -ms-flex: 3 0 0px;
+    flex: 3 0;
+}
+
+.flex-4 {
+    -ms-flex: 4 0 0px;
+    flex: 4 0;
+}
+
+.flex-5 {
+    -ms-flex: 5 0 0px;
+    flex: 5 0;
+}
+
+.flex-6 {
+    -ms-flex: 6 0 0px;
+    flex: 6 0;
+}
+
+.flex-7 {
+    -ms-flex: 7 0 0px;
+    flex: 7 0;
+}
+
+.flex-8 {
+    -ms-flex: 8 0 0px;
+    flex: 8 0;
+}
+
+.flex-9 {
+    -ms-flex: 9 0 0px;
+    flex: 9 0;
+}
+
+.btn-blue-s, .btn-blue-m, .btn-blue-l, .btn-green-s, .btn-green-m, .btn-green-l, .btn-red-s, .btn-red-m, .btn-red-l {
+    display: inline-block;
+    background-color: #6f6dd8;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 15px;
+    padding: 0 18px;
+    margin: 0 5px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.btn-blue-m, .btn-green-m, .btn-red-m {
+    height: 40px;
+    line-height: 40px;
+    border-radius: 20px;
+    padding: 0 30px;
+}
+
+.btn-blue-l, .btn-green-l, .btn-red-l {
+    height: 50px;
+    line-height: 50px;
+    border-radius: 25px;
+    padding: 0 30px;
+}
+
+.btn-green-s, .btn-green-m, .btn-green-l {
+    background-color: #84d476;
+}
+
+.btn-red-s, .btn-red-m, .btn-red-l {
+    background-color: #ff5e5e;
+}
+
+.btn-blue-s:hover, .btn-blue-m:hover, .btn-blue-l:hover {
+    background-color: #5856b8;
+}
+
+.btn-green-s:hover, .btn-green-m:hover, .btn-green-l:hover {
+    background-color: #70b863;
+}
+
+.btn-red-s:hover, .btn-red-m:hover, .btn-red-l:hover {
+    background-color: #e45757;
+}
+
+.btn-blue-s:active, .btn-blue-m:active, .btn-blue-l:active {
+    background-color: #6f6dd8;
+}
+
+.btn-green-s:active, .btn-green-m:active, .btn-green-l:active {
+    background-color: #84d476;
+}
+
+.btn-red-s:active, .btn-red-m:active, .btn-red-l:active {
+    background-color: #ff5e5e;
+}
+
+.icon-btn {
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    margin: 0 5px;
+    padding: 0 10px;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 16px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.icon-btn:hover {
+    background-color: #fff;
+    color: #6f6dd8;
+}
+
+.icon-btn:active {
+    background-color: #fff;
+    color: #5856b8;
+    font-weight: bold;
+}
+
+.icon-btn span {
+    padding-right: 6px;
+    font-size: 18px;
+}
+
+.table-txt {
+    padding-right: 20px;
+    color: #888;
+    vertical-align: text-top;
+    line-height: 30px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.table-content {
+    padding: 6px 0;
+}
+
+.table-alert {
+    line-height: 30px;
+    margin: 0;
+    color: #888;
+    font-size: 14px;
+    text-align: left;
+    width: 100%;
+}

@@ -1,0 +1,8 @@
+module.exports = __webpack_public_path__ + "static/media/loading.16b0bde7.gif";
+
+
+//////////////////
+// WEBPACK FOOTER
+// ./src/images/loading.gif
+// module id = 553
+// module chunks = 0 1

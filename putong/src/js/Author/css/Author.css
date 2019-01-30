@@ -1,0 +1,29 @@
+.author {
+    width: 100%;
+    min-height: 500px;
+    padding: 20px;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+}
+
+.userprofile {
+    width: 120px;
+    height: 120px;
+    border-radius: 60px;
+}
+
+.author .btn-green-m {
+    margin: 20px 0;
+}
+
+.link-btn {
+    font-style: normal;
+    margin: 0 5px;
+    text-decoration: underline;
+    color: #6f6dd8;
+    cursor: pointer;
+}
+
+.link-btn:hover {
+    color: #5856b8;
+}

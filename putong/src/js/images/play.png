@@ -1,0 +1,8 @@
+module.exports = __webpack_public_path__ + "static/media/play.1cd90384.png";
+
+
+//////////////////
+// WEBPACK FOOTER
+// ./src/images/play.png
+// module id = 552
+// module chunks = 0 1

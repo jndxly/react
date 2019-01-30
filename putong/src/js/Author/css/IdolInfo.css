@@ -1,0 +1,15 @@
+.idolinfo {
+  position: relative;
+  width: 100%;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  height: 600px;
+  padding: 20px;
+  top: 10px;
+}
+
+.fuc-btns {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+}

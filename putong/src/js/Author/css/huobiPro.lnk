@@ -1,0 +1,39 @@
+.galleries {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  padding: 10px 20px;
+  background-color: #fff;
+}
+
+.galleries-none {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100% - 100px);
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+}
+
+.galleries td {
+  padding: 5px 10px;
+}
+
+.add-item, .delete-item {
+  font-size: 22px;
+  color: #888;
+  cursor: pointer;
+}
+
+.add-item:hover, .delete-item:hover {
+  color: #6f6dd8;
+}
+
+
