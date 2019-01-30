@@ -40,13 +40,35 @@ app.post("/v1/project/328", function(req, res){
     let json = {"error":0};
     res.send(JSON.stringify(json));
 });
+
 app.get("/sockjs-node", function(req, res){
     let json = {"error":0};
     res.send(JSON.stringify(json));
 });
 
+app.get("/v1/author/avatar/sign", function(req, res){
 
-var server = app.listen(5000, function () {
+    res.send("q-sign-algorithm=sha1&q-ak=AKIDHRQFxtMSFwTuAHCyd9UksreMwKWmvreJ&q-sign-time=1548832451;1548832751&q-key-time=1548832451;1548832751&q-header-list=&q-url-param-list=&q-signature=b7afb56a7e6ac1ab4b8955d75d7e3232a6796f48");
+});
+
+app.post("/v1/project/new", function(req, res){
+    let json = {"error":0,"id":337};
+    res.send(JSON.stringify(json));
+});
+
+app.post("/v1/project/del", function(req, res){
+    let json = {"error":0}
+    res.send(JSON.stringify(json));
+});
+
+
+app.post("/v1/project", function(req, res){
+    let json = {"error":0}
+    res.send(JSON.stringify(json));
+});
+
+
+var server = app.listen(3001, function () {
 
     var host = server.address().address
     var port = server.address().port

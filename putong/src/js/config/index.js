@@ -1,7 +1,7 @@
 import COS from 'cos-js-sdk-v5';
 
 const config = {
-  host: 'weixin.91smart.net',
+  host: 'localhost:3000',
   // host: '172.168.11.124:8060',
   // host: '172.168.11.240:8060',
   token: '',

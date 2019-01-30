@@ -23,7 +23,7 @@ class Home extends Component {
   }
 
   componentWillMount() {
-    this.ws = new WebSocket('ws://' + config.host + '/v1/ws/regist?token=' + encodeURIComponent(this.props.user.token) + '&identity=editor');
+    this.ws = new WebSocket('ws://localhost:3000'  + '/v1/ws/regist?token=' + encodeURIComponent(this.props.user.token) + '&identity=editor');
     this.ws.onopen = (evt) => {
       this.timer = setInterval(() => {
         this.ws.send('heartbeat');

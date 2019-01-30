@@ -136,7 +136,8 @@ class NewProject extends Component {
 
   tosteproles = () => {
     if (this.props.outline.image === '') {
-      this.props.showMessage('error', '必须上传作品图片！');
+      // this.props.showMessage('error', '必须上传作品图片！');
+        this.setState({ step: 'roles' });
     } else if (this.props.outline.title === '') {
       this.props.showMessage('error', '作品名称不能为空！');
     } else if (this.props.outline.tags === '') {

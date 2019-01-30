@@ -47,7 +47,7 @@ class FileUpload extends Component {
       return (
         <label id="uploadbox2">
           <div className="uploadinfo"><span className="fa fa-check icon-ok"></span><p>预览图生成中...</p></div>
-          <img src={this.props.src ? this.props.src + '.0_0.p0.jpg' : defaultimg2} alt="" onError={this.reloadimg} />
+          <img src={this.props.src ? this.props.src + '.0_0.p0.jpg' : defaultimg2} alt=""  />
           <input className="upload" type="file" value={this.state.file} onChange={this.uploadFile} />
         </label>
       )
