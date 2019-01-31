@@ -6,7 +6,7 @@
   min-width: calc(768px * 0.4653);
   height: 100%;
   color: #333;
-  /*background-image: url("../../images/preview_bg.png");*/
+  background-image: url("../../images/preview_bg.png");
   background-size: 100% 100%;
   z-index: 100;
 }
