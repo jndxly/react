@@ -1,0 +1,18 @@
+.zby-list-title {
+  padding: 0 40px;
+  font-size: 14px;
+  line-height: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: top; }
+  [data-dpr="2"] .zby-list-title {
+    font-size: 28px; }
+  [data-dpr="3"] .zby-list-title {
+    font-size: 42px; }
+  .zby-list-title.center {
+    text-align: center; }
+  .zby-list-title.right {
+    text-align: right; }
+
+/*# sourceMappingURL=index.css.map */

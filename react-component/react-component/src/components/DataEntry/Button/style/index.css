@@ -1,0 +1,143 @@
+@keyframes BombIn {
+  0% {
+    transform: translate(-50%, -50%, 0) scale(0, 0);
+    -webkit-transform: translate(-50%, -50%, 0) scale(0, 0); }
+  50% {
+    transform: translate(-50%, -50%, 0) scale(1.2, 1.2);
+    -webkit-transform: translate(-50%, -50%) scale(1.2, 1.2); }
+  100% {
+    transform: translate(-50%, -50%) scale(1, 1);
+    -webkit-transform: translate(-50%, -50%) scale(1, 1); } }
+@keyframes Flop {
+  0% {
+    transform: translate(-50%, -50%) rotateY(90deg);
+    -webkit-transform: translate(-50%, -50%) rotateY(90deg); }
+  33% {
+    transform: translate(-50%, -50%) rotateY(0deg);
+    -webkit-transform: translate(-50%, -50%) rotateY(0deg); }
+  67% {
+    transform: translate(-50%, -50%) rotateY(-30deg);
+    -webkit-transform: translate(-50%, -50%) rotateY(-30deg); }
+  100% {
+    transform: translate(-50%, -50%) rotateY(0deg);
+    -webkit-transform: translate(-50%, -50%) rotateY(0deg); } }
+@keyframes slideInFromBottom {
+  0% {
+    transform: translate(-50%, 0%);
+    -webkit-transform: translate(-50%, 0%);
+    opacity: 0; }
+  100% {
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    opacity: 1; } }
+@keyframes shake {
+  from, to {
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); }
+  15%, 45%, 75% {
+    -webkit-transform: translate(-60%, -50%);
+    transform: translate(-60%, -50%); }
+  30%, 60%, 90% {
+    -webkit-transform: translate(-40%, -50%);
+    transform: translate(-40%, -50%); } }
+@keyframes scaleIn {
+  0% {
+    width: 0;
+    height: 0; }
+  100% {
+    width: 160px;
+    height: 160px; } }
+@keyframes scaleOut {
+  0% {
+    width: 160px;
+    height: 160px;
+    opacity: 1; }
+  100% {
+    width: 0;
+    height: 0;
+    opacity: 0; } }
+@keyframes turnUp {
+  0% {
+    transform: translate3D(0, -10px, 0) rotateX(90deg); }
+  100% {
+    transform: translate3D(0, -10px, 0) rotateX(0); } }
+@keyframes turnLeft {
+  0% {
+    transform: translate3D(-10px, 0, 0) rotateY(90deg); }
+  100% {
+    transform: translate3D(-10px, 0, 0) rotateY(0); } }
+@keyframes turnRight {
+  0% {
+    transform: translate3D(10px, 0, 0) rotateY(90deg); }
+  100% {
+    transform: translate3D(10px, 0, 0) rotateY(0); } }
+@keyframes turnBottom {
+  0% {
+    transform: translate3D(0, 10px, 0) rotateX(90deg); }
+  100% {
+    transform: translate3D(0, 10px, 0) rotateX(0); } }
+.zby-button {
+  display: block;
+  margin: 20px 0;
+  height: 100px;
+  border-radius: 10px;
+  background-color: #fff;
+  border: 2px solid #ddd;
+  text-align: center;
+  line-height: 100px;
+  font-size: 32px;
+  overflow: hidden;
+  clear: both;
+  outline: none;
+  opacity: 1;
+  transition: opacity .5s; }
+  .zby-button.inline {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 0 20px;
+    height: auto;
+    font-size: 28px;
+    line-height: 50px;
+    vertical-align: middle; }
+  .zby-button.group {
+    margin: 20px 10px;
+    padding: 0 40px;
+    flex: 1; }
+  .zby-button.disabled {
+    background-color: #ddd; }
+    .zby-button.disabled .zby-button-text, .zby-button.disabled .fa {
+      color: #bbb; }
+    .zby-button.disabled.primary {
+      opacity: .5; }
+    .zby-button.disabled.ghost {
+      border-color: #bbb;
+      opacity: .5; }
+      .zby-button.disabled.ghost .zby-button-text, .zby-button.disabled.ghost .fa {
+        color: #bbb; }
+  .zby-button.primary {
+    background-color: #00b4a5;
+    border: none; }
+    .zby-button.primary.zby-button-active {
+      background-color: #009486; }
+    .zby-button.primary .zby-button-text, .zby-button.primary .fa {
+      color: #fff; }
+  .zby-button.ghost {
+    background-color: transparent;
+    border-color: #00b4a5; }
+    .zby-button.ghost.zby-button-active {
+      background-color: #00b4a5; }
+      .zby-button.ghost.zby-button-active .zby-button-text, .zby-button.ghost.zby-button-active .fa {
+        color: #fff; }
+    .zby-button.ghost .zby-button-text, .zby-button.ghost .fa {
+      color: #00b4a5; }
+  .zby-button.zby-button-active {
+    background-color: #ddd; }
+  .zby-button .zby-button-text {
+    display: inline-block;
+    color: #000; }
+  .zby-button .fa {
+    display: inline-block;
+    margin-right: 10px;
+    color: #000; }
+
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+@import '../../../../static/sass/base.scss';
+
+$prefixCls: 'zby-carousel';
+
+// Carousel
+.#{$prefixCls} {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+  .#{$prefixCls}-list {
+    overflow: hidden;
+
+    .#{$prefixCls}-figure {
+      float: left;
+      height: 300px;
+      background: #333333;
+    }
+  }
+
+  .#{$prefixCls}-dot-box {
+    position: absolute;
+    left: 50%;
+    bottom: 15px;
+
+    transform: translate(-50%, 0);
+
+    .#{$prefixCls}-dot {
+      display: inline-block;
+      margin-right: 20px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: #fff;
+      transition: all .3s;
+
+      &.active {
+        transform: scale(1.5, 1.5);
+      }
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+  }
+}
+

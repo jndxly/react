@@ -1,0 +1,334 @@
+@charset "UTF-8";
+
+$viColor: #00b4a5;
+
+textarea {
+  box-sizing: border-box;
+}
+
+// form表单最外层div 只负责样式
+.zby-form-box {
+  margin-bottom: 30px;
+  padding: 0 20px;
+  background: #fff;
+}
+
+// input textarea样式
+.zby-form-line-box {
+  overflow: hidden;
+  border-bottom: #eee solid 2px;
+
+  &.text-area {
+    .content {
+      .input-readonly {
+        padding-top: 30px;
+        padding-bottom: 30px;
+        min-height: 200px;
+        line-height: 40px;
+        word-break: break-all;
+      }
+
+      textarea {
+        display: block;
+        width: 100%;
+        padding: 30px 0 30px 20px;
+        min-height: 200px;
+        font-size: 26px;
+        line-height: 40px;
+        color: #333;
+        border: none;
+        resize: none;
+        outline: none;
+      }
+    }
+  }
+
+  &.select {
+    .content {
+      padding: 0 20px;
+
+      .input-readonly {
+        padding: 0;
+      }
+    }
+  }
+
+  &.checkbox {
+
+    .checkbox-item-line {
+      &:last-of-type {
+        .checkbox-label {
+          border-bottom: none;
+        }
+      }
+      &.readonly {
+        .check-box-box {
+          opacity: .5;
+        }
+
+        .checkbox-label {
+          color: #999;
+        }
+      }
+    }
+
+    .check-box-box {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      float: left;
+
+      .check-box {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        perspective: 1000;
+        -webkit-perspective: 1000;
+
+        margin-left: -21px;
+        margin-top: -21px;
+        transition: 0.5s;
+        -webkit-transition: 0.5s;
+
+        transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
+
+        &.checked {
+          transform: rotateY(180deg);
+          -webkit-transform: rotateY(180deg);
+        }
+
+        .front {
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: block;
+          width: 42px;
+          height: 42px;
+          border: 2px solid #d5d5d5;
+          background: #ffffff;
+          border-radius: 50%;
+          z-index: 2;
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+        }
+
+        .back {
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: block;
+          width: 46px;
+          height: 46px;
+          font-size: 42px;
+          border-radius: 50%;
+          color: #46ab39;
+          transform: rotateY(180deg);
+          -webkit-transform: rotateY(180deg);
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+
+          .fa {
+            display: block;
+            text-align: center;
+
+            transform: scale(1.2);
+          }
+        }
+      }
+    }
+
+    .checkbox-label {
+      margin-left: 100px;
+      padding: 30px 0 30px 20px;
+      font-size: 26px;
+      line-height: 40px;
+      color: #333;
+      word-break: break-all;
+      border-bottom: #eee solid 2px;
+    }
+  }
+
+  &.number {
+    .content {
+      position: relative;
+
+      input {
+        padding-right: 120px;
+      }
+
+      .unit {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 120px;
+        color: #999;
+        text-align: center;
+        font-size: 26px;
+        line-height: 100px;
+      }
+    }
+  }
+
+  &.switch {
+    .content {
+      height: 100px;
+      text-align: right;
+      padding-top: 20px;
+    }
+  }
+
+  &.error {
+    border-bottom-color: red;
+
+    .title {
+      .label-name {
+        color: red;
+      }
+    }
+  }
+
+  .title {
+    position: relative;
+    padding: 0;
+    width: 230px;
+    float: left;
+    left: 0;
+    top: 0;
+
+    .fa-asterisk {
+      display: inline-block;
+      font-size: 26px;
+      line-height: 100px;
+      color: red;
+      visibility: hidden;
+
+      &.required {
+        visibility: visible;
+      }
+    }
+
+    .label-name {
+      display: inline-block;
+      max-width: 200px;
+      height: 100px;
+      padding-left: 20px;
+      color: #999;
+      font-size: 26px;
+      line-height: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      vertical-align: top;
+    }
+  }
+
+  .content {
+    box-sizing: border-box;
+    margin-left: 230px;
+
+    &.has-feedback {
+      position: relative;
+
+      input {
+        padding-right: 10px;
+      }
+
+      .fa {
+        position: absolute;
+        top: 50%;
+        right: 60px;
+        margin-top: -20px;
+        font-size: 40px;
+
+        &.fa-check-circle {
+          color: $viColor;
+        }
+
+        &.fa-exclamation-circle {
+          color: #ffbf00;
+        }
+
+        &.fa-times-circle {
+          color: #f04134;
+        }
+
+        &.fa-circle-o-notch {
+          color: #108ee9;
+        }
+      }
+    }
+
+    input {
+      width: 100%;
+      padding: 30px 0 30px 20px;
+      font-size: 26px;
+      line-height: 40px;
+      color: #333;
+      border: none;
+
+      box-sizing: border-box;
+    }
+
+    .input-readonly {
+      padding-left: 20px;
+      font-size: 26px;
+      line-height: 100px;
+      color: #999;
+    }
+
+    .connection {
+      float: left;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    .zby-list-item {
+      padding-left: 0;
+      padding-right: 20px;
+
+      .zby-item-box {
+        padding-right: 20px;
+      }
+    }
+  }
+}
+
+.zby-form-title {
+  height: 60px;
+  padding: 0 20px;
+  line-height: 60px;
+  font-size: 26px;
+  color: #333;
+}
+
+.zby-form-box > .zby-form-line-box {
+  &:last-of-type {
+    border-bottom: none;
+  }
+}
+
+// 报错样式
+.zby-form-error {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 19px 10px;
+  background: #f04134;
+
+  font-size: 28px;
+  color: #fff;
+  text-align: center;
+
+  box-shadow: 0 10px 20px 5px rgba(0,0,0,.3);
+  animation: slideDown .3s;
+}
+
+@keyframes slideDown {
+  from {transform: translateY(-100%);}
+  to {transform: translateY(0);}
+}

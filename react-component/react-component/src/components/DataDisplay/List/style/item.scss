@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+@import '../../../../static/sass/base.scss';
+
+$prefixCls: 'zby-item';
+
+.#{$prefixCls} {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  padding: 20px 40px;
+  min-height: 88px;
+  vertical-align: middle;
+  overflow: hidden;
+  align-items: center;
+  transition: background-color .3s;
+
+  &.#{$prefixCls}-active {
+    background-color: $lightGray;
+  }
+
+  &.disabled {
+    .#{$prefixCls}-content,
+    .#{$prefixCls}-extra,
+    .#{$prefixCls}-subtitle {
+      color: $darkGray;
+    }
+  }
+
+  // 缩略图
+  img {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: $darkGray;
+    overflow: hidden;
+  }
+
+  .fa-thumb {
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 32px;
+    line-height: 1.5;
+  }
+
+  // 主题
+  .#{$prefixCls}-content {
+    flex: 1;
+    font-size: 32px;
+    line-height: 1.5;
+    color: #000;
+    overflow: hidden;
+
+    &.wrap {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    // 副标题
+    .#{$prefixCls}-subtitle {
+      color: $textGray;
+      font-size: 28px;
+      line-height: 1.5;
+      margin-top: .12rem;
+    }
+  }
+
+  // 右侧额外提示
+  .#{$prefixCls}-extra {
+    flex-basis: 36%;
+    color: $textGray;
+    font-size: 28px;
+    text-align: right;
+
+    &.wrap {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  // 右侧箭头
+  .#{$prefixCls}-arrow {
+    display: block;
+    width: 30px;
+    height: 56px;
+    margin-left: 10px;
+    text-align: center;
+
+    .fa {
+      display: block;
+      font-size: 48px;
+      color: $textGray;
+    }
+  }
+}

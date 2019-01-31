@@ -1,0 +1,169 @@
+@charset "UTF-8";
+
+@import '../../../../static/sass/base.scss';
+
+$prefixCls: 'zby-switch';
+
+// Switch
+.#{$prefixCls} {
+  position: relative;
+  display: inline-block;
+  margin: 8px 0;
+  width: 120px;
+  border-radius: 30px;
+  vertical-align: middle;
+  // 清除浏览器默认样式
+  appearance: none;
+  transition: all .3s;
+  z-index: 2;
+
+  &.iOS {
+    height: 60px;
+    border: 2px solid #e5e5e5;
+    box-shadow: 0 2px 5px rgba(0,0,0,.3) inset;
+
+    &:after {
+      width: 60px;
+      height: 60px;
+      left: 1px;
+      top: 1px;
+      background-color: #fff;
+      box-shadow: 0 8px 10px rgba(0,0,0,.3);
+    }
+
+    &.focus {
+      &:after {
+        width: 70px;
+      }
+
+      &.on {
+        &:after {
+          transform: translateX(68%);
+        }
+      }
+    }
+
+    &.disabled {
+      opacity: .3;
+    }
+  }
+
+  &.android {
+    height: 60px;
+    background-color: $viColor;
+
+    &:after {
+      width: 52px;
+      height: 52px;
+      left: 4px;
+      top: 4px;
+      background-color: #fff;
+    }
+
+    &.focus {
+      &:after {
+        width: 60px;
+      }
+
+      &.on {
+        &:after {
+          transform: translateX(85%);
+        }
+      }
+    }
+
+    &.disabled {
+      &.on, &.off {
+        background-color: $lightGray;
+        &:after {
+          background-color: $darkGray;
+        }
+      }
+    }
+
+    .attachedTextFalse {
+      color: #fff;
+      opacity: 1;
+    }
+  }
+
+  // 关闭时候的样式
+  &.off {
+    &.iOS {
+      background-color: #fff;
+    }
+
+    &.android {
+      background-color: $darkGray;
+    }
+
+    &:after {
+      transform: translateX(0%);
+    }
+
+    .attachedTextFalse {
+      opacity: .8;
+      transform: translateX(0);
+    }
+  }
+
+  // 开的样式
+  &.on {
+    &.iOS {
+      background-color: #4dd865;
+
+      &:after {
+        transform: translateX(95%);
+      }
+    }
+
+    &.android {
+      background-color: $viColor;
+
+      &:after {
+        transform: translateX(112%);
+      }
+    }
+
+    .attachedTextTrue {
+      opacity: .8;
+      transform: translateX(0);
+    }
+  }
+
+  //
+  &:after {
+    content: '';
+    position: absolute;
+    border-radius: 30px;
+    z-index: 3;
+    transition: all .3s;
+  }
+
+  // 开关文字
+  .attachedTextTrue,
+  .attachedTextFalse {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    font-size: 26px;
+    text-align: center;
+    line-height: 60px;
+    opacity: 0;
+
+    transition: all .3s;
+  }
+
+  .attachedTextTrue {
+    left: 0;
+    color: #fff;
+    transform: translate3D(-100%, 0, 0);
+  }
+
+  .attachedTextFalse {
+    right: 0;
+    color: $textGray;
+    transform: translate3D(100%, 0, 0);
+  }
+}
