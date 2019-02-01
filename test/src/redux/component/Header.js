@@ -13,9 +13,9 @@ class Header extends Component {
 
     	return (
           <div>
-       		   <h1 style={{ color: color }}>this is header</h1>
+       		   <h1 style={{ color: color.color }}>this is header</h1>
              <button
-              style={{ color: color }}
+              style={{ color: color.color }}
               onClick={changeColor.bind(this)}>Red</button>
           </div>
         )

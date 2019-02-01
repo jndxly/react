@@ -6,17 +6,17 @@ import actions from './redux/actions/action';
 import Header from './redux/component/Header';
 import Content from './redux/component/Content';
 
-
-const mapStateToProps = state => ({
-    color : state.color
-})
-
-const mapDispatchToProps = dispatch => ({
-    actions:bindActionCreators(actions, dispatch)
-})
-
-@connect(mapStateToProps, mapDispatchToProps)
-export default class Container extends Component{
+//
+// const mapStateToProps = state => ({
+//     color : state.color
+// })
+//
+// const mapDispatchToProps = dispatch => ({
+//     actions:bindActionCreators(actions, dispatch)
+// })
+//
+// @connect(mapStateToProps, mapDispatchToProps)
+ class Container extends Component{
 
     render(){
 
@@ -36,12 +36,12 @@ export default class Container extends Component{
 
 
 }
-// const mapStateToProps = state => ({
-//     color : state.color
-// })
-//
-// const mapDispatchToProps = dispatch => ({
-//     actions:bindActionCreators(actions, dispatch)
-// })
+const mapStateToProps = state => ({
+    color : state.color
+})
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Container)
+const mapDispatchToProps = dispatch => ({
+    actions:bindActionCreators(actions, dispatch)
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Container)
