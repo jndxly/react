@@ -66,6 +66,10 @@ app.post("/v1/project", function(req, res){
     let json = {"error":0}
     res.send(JSON.stringify(json));
 });
+// app.post("/fileUpload/upload", function(req, res){
+//     let json = {"error":0}
+//     res.send(JSON.stringify(json));
+// });
 
 
 var server = app.listen(3001, function () {

@@ -45,23 +45,30 @@ const config = {
         else if(window.ActiveXObject){
             xhr = new window.ActiveXObject("Microsoft.XMLHTTP")
         }
+        xhr.withCredentials = true;
 
 
 
-        xhr.onreadystatechange = function(){
-          if(xhr.state == 4 && xhr.status >= 200 && xhr.status < 300){
-            let result = JSON.parse(xhr.responseText);
-              resolve(result);
-          }
-          else{
-            reject()
-          }
-        }
 
-        xhr.open("POST", url, true)
+        xhr.open("POST", url, true);
 
         // 发送表单数据
         xhr.send(formData);
+
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4 ){
+                if(xhr.status >= 200 && xhr.status < 300){
+                    let result = JSON.parse(xhr.responseText);
+                    resolve(result.data);
+                }
+
+                else{
+                    reject()
+                }
+
+            }
+
+        }
     })
 
 
