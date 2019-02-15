@@ -1,7 +1,7 @@
 import COS from 'cos-js-sdk-v5';
 
 const config = {
-  host: 'localhost:3000',
+  host: '//10.4.145.144:8086/fileUpload/upload',
   // host: '172.168.11.124:8060',
   // host: '172.168.11.240:8060',
   token: '',
@@ -35,8 +35,8 @@ const config = {
 
     return new Promise(function(resolve, reject){
         let formData = new FormData();
-        formData.append(file);
-        let url = 'http://' + config.host + '/v1/author/avatar/sign?ext=';
+        formData.append("file", file);
+        let url = config.host ;
         // 实例化一个AJAX对象
         let xhr;
         if(window.XMLHttpRequest){
@@ -45,6 +45,8 @@ const config = {
         else if(window.ActiveXObject){
             xhr = new window.ActiveXObject("Microsoft.XMLHTTP")
         }
+
+
 
         xhr.onreadystatechange = function(){
           if(xhr.state == 4 && xhr.status >= 200 && xhr.status < 300){

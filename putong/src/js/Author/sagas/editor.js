@@ -2184,5 +2184,3 @@ export default function* editor() {
 };
 
 
-// WEBPACK FOOTER //
-// ./src/Author/sagas/editor.js
