@@ -116,11 +116,11 @@ class ProjectEditor extends Component {
           <div className="back" onClick={() => setRouter('Home-List-Production')} title="返回首页"><span className="fa fa-arrow-left"></span></div>
           <div className="projecttitle">{outline.title}</div>
           <div className="toolbar">
-            <div className="icon-btn" onClick={() => { window.open('http://web.putong.91smart.net/%E7%BC%96%E8%BE%91%E5%99%A8%E5%86%99%E4%BD%9C%E5%B8%AE%E5%8A%A9%E6%96%87%E6%A1%A3.pdf') }}><span className="fa fa-question-circle-o"></span>帮助</div>
+            {/*<div className="icon-btn" onClick={() => { window.open('http://web.putong.91smart.net/%E7%BC%96%E8%BE%91%E5%99%A8%E5%86%99%E4%BD%9C%E5%B8%AE%E5%8A%A9%E6%96%87%E6%A1%A3.pdf') }}><span className="fa fa-question-circle-o"></span>帮助</div>*/}
             <div className="icon-btn" onClick={() => { this.props.showTotalAlert('字数总计：' + this.props.outline.character_count) }}><span className="fa fa-bar-chart-o"></span>字数统计</div>
-            <div className="icon-btn" onClick={this.toggleglobalcomment}><span className="fa fa-edit"></span>全文批注</div>
+            {/*<div className="icon-btn" onClick={this.toggleglobalcomment}><span className="fa fa-edit"></span>全文批注</div>*/}
             <div className="icon-btn" onClick={() => setRouter('ProjectEditor-Setings-Outline-o')}><span className="fa fa-sliders seting-icon" ></span>作品设置</div>
-            <div className="icon-btn" onClick={previewProject}><span className="fa fa-caret-square-o-right"></span>真机预览</div>
+            {/*<div className="icon-btn" onClick={previewProject}><span className="fa fa-caret-square-o-right"></span>真机预览</div>*/}
             <div className="icon-btn" onClick={commitProject}><span className="fa fa-send-o"></span>投稿</div>
             {router.split('-')[1] === 'Editor' ? <div className="icon-btn" onClick={saveProject}><span className="fa fa-floppy-o"></span>保存</div> : null}
           </div>

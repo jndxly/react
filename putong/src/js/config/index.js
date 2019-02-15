@@ -30,7 +30,40 @@ const config = {
       // console.log(authorization);
       // callback(authorization);
     }
-  })
+  }),
+    importHandler:function(file){
+
+    return new Promise(function(resolve, reject){
+        let formData = new FormData();
+        formData.append(file);
+        let url = 'http://' + config.host + '/v1/author/avatar/sign?ext=';
+        // 实例化一个AJAX对象
+        let xhr;
+        if(window.XMLHttpRequest){
+            xhr = new XMLHttpRequest();
+        }
+        else if(window.ActiveXObject){
+            xhr = new window.ActiveXObject("Microsoft.XMLHTTP")
+        }
+
+        xhr.onreadystatechange = function(){
+          if(xhr.state == 4 && xhr.status >= 200 && xhr.status < 300){
+            let result = JSON.parse(xhr.responseText);
+              resolve(result);
+          }
+          else{
+            reject()
+          }
+        }
+
+        xhr.open("POST", url, true)
+
+        // 发送表单数据
+        xhr.send(formData);
+    })
+
+
+    }
 }
 
 export default config;

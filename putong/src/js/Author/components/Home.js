@@ -229,7 +229,7 @@ class Home extends Component {
     return (
       <div className="home">
         <div className="header">
-          <div className="title">PutongPutong · <b>作者专区</b></div>
+          <div className="title">LianLian · <b>作者专区</b></div>
           <div className="user">
             <img className="user-photo" alt="头像" src={this.props.user.profile === '' ? this.state.defaultimg : this.props.user.profile} />
             <ul className="user-menu">
