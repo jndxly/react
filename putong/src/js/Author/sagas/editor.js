@@ -1736,21 +1736,26 @@ function* uploadFile(action) {
             let info = '_' + video.videoWidth + '_' + video.videoHeight + '_' + Math.round(video.duration);
             name = name + info + type;
             // 上传文件
-            config.cos.putObject({
-              Bucket: Bucket,
-              Region: Region,
-              Key: '/script/' + name,
-              Body: file,
-            }, (err, data) => {
-              if (err) {
-                // console.log(err);
-                reject('文件上传出错，请确保网络正常后再试！');
-              } else {
-                // console.log(data);
-                resolve('http://video.putong.91smart.net/script/' + name);
-              }
-            });
+            // config.cos.putObject({
+            //   Bucket: Bucket,
+            //   Region: Region,
+            //   Key: '/script/' + name,
+            //   Body: file,
+            // }, (err, data) => {
+            //   if (err) {
+            //     // console.log(err);
+            //     reject('文件上传出错，请确保网络正常后再试！');
+            //   } else {
+            //     // console.log(data);
+            //     resolve('http://video.putong.91smart.net/script/' + name);
+            //   }
+            // });
           }
+            config.importHandler(file).then(function(name){
+                resolve(name);
+            },function(){
+                reject('服务器处理错误！');
+            })
           video.onerror = () => {
             reject('文件上传出错，不是标准的mp4格式！');
           }
@@ -1770,20 +1775,25 @@ function* uploadFile(action) {
             let info = '_' + Math.round(audio.duration);
             name = name + info + type;
             // 上传文件
-            config.cos.putObject({
-              Bucket: Bucket,
-              Region: Region,
-              Key: '/script/' + name,
-              Body: file,
-            }, (err, data) => {
-              if (err) {
-                // console.log(err);
-                reject('文件上传出错，请确保网络正常后再试！');
-              } else {
-                // console.log(data);
-                resolve('http://audio.putong.91smart.net/script/' + name);
-              }
-            });
+            // config.cos.putObject({
+            //   Bucket: Bucket,
+            //   Region: Region,
+            //   Key: '/script/' + name,
+            //   Body: file,
+            // }, (err, data) => {
+            //   if (err) {
+            //     // console.log(err);
+            //     reject('文件上传出错，请确保网络正常后再试！');
+            //   } else {
+            //     // console.log(data);
+            //     resolve('http://audio.putong.91smart.net/script/' + name);
+            //   }
+            // });
+              config.importHandler(file).then(function(name){
+                  resolve(name);
+              },function(){
+                  reject('服务器处理错误！');
+              })
           }
           audio.onerror = () => {
             reject('文件上传出错，可能音频存在问题！');
