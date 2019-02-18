@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import actions from './redux/actions/action';
 import Header from './redux/component/Header';
 import Content from './redux/component/Content';
+import {ThemeContext} from './ThemeContext'
 
 
 
@@ -14,24 +15,32 @@ class Container extends Component{
 
 
 
-  // 返回Context对象，方法名是约定好的
-  getChildContext () {
-    return {
-      test:"test"
-    }
-  }
+
 
     render(){
 
         let {color, actions} = this.props;
+        let test1 = {
+          test:"aaa"
+        }
+
+      return (
+        <div>
+          <Header color={color.color} changeColor={actions.changeRed} />
+          <Content color={color.color} changeColor={actions.changeBlue}/>
+        </div>
+      );
 
 
-        return (
-            <div>
-                <Header color={color.color} changeColor={actions.changeRed} />
-                <Content color={color.color} changeColor={actions.changeBlue}/>
-            </div>
-        );
+        // return (
+        //   <ThemeContext.Provider value={test1}>
+        //     <div>
+        //       <Header color={color.color} changeColor={actions.changeRed} />
+        //       <Content color={color.color} changeColor={actions.changeBlue}/>
+        //     </div>
+        //   </ThemeContext.Provider>
+        //
+        // );
     }
 
 
@@ -40,9 +49,7 @@ class Container extends Component{
 
 }
 
-Container.childContextTypes = {
-  test: PropTypes.string
-}
+
 const mapStateToProps = state => ({
     color : state.color
  })
