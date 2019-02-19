@@ -137,7 +137,7 @@ class Home extends Component {
       return (
         <ul className="tabs">
           <li className="current" onClick={() => setRouter('Home-List-Production')}>我的作品</li>
-          <li onClick={() => setRouter('Home-List-Idol')}>我的偶像</li>
+          {/*<li onClick={() => setRouter('Home-List-Idol')}>我的偶像</li>*/}
         </ul>
       )
     } else {

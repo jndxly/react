@@ -48,9 +48,9 @@ class Project extends Component {
                 <div className="projcte-title flex-3"><p>{outline.title}</p></div>
                 <div className="flex-3">{outline.tags.replace(/,/g, '，')}</div>
                 <div className="flex-1">{outline.character_count.toLocaleString()}</div>
-                <div className="flex-1">{outline.sign_status === 0 ? '未签约' : '已签约'}</div>
-                <div className="flex-1">{outline.online_status === 0 ? '未上架' : '已上架'}</div>
-                <div className="flex-1">{this.getstatus(outline.status)}</div>
+                {/*<div className="flex-1">{outline.sign_status === 0 ? '未签约' : '已签约'}</div>*/}
+                {/*<div className="flex-1">{outline.online_status === 0 ? '未上架' : '已上架'}</div>*/}
+                {/*<div className="flex-1">{this.getstatus(outline.status)}</div>*/}
                 <div className="flex-3">
                     <div className="btn-blue-s btn-editor" onClick={() => this.props.navigateToProjectEditor(outline.id)}>编辑</div>
                     <div className="btn-green-s btn-delete" onClick={() => this.deleteProject(outline.id)}>删除</div>

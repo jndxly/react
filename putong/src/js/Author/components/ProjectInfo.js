@@ -254,14 +254,14 @@ class ProjectInfo extends Component {
               <td className="table-txt">字数：</td>
               <td className="table-content">{outline.character_count}</td>
             </tr>
-            <tr>
-              <td className="table-txt">上架状态：</td>
-              <td className="table-content">{outline.online_status === 0 ? '未上架' : '已上架'}</td>
-            </tr>
-            <tr>
-              <td className="table-txt">审核状态：</td>
-              <td className="table-content">{this.getstatus(outline.status)}</td>
-            </tr>
+            {/*<tr>*/}
+              {/*<td className="table-txt">上架状态：</td>*/}
+              {/*<td className="table-content">{outline.online_status === 0 ? '未上架' : '已上架'}</td>*/}
+            {/*</tr>*/}
+            {/*<tr>*/}
+              {/*<td className="table-txt">审核状态：</td>*/}
+              {/*<td className="table-content">{this.getstatus(outline.status)}</td>*/}
+            {/*</tr>*/}
             <tr>
               <td className="table-txt">作品标签：</td>
               <td className="table-content tag-items">
@@ -269,14 +269,14 @@ class ProjectInfo extends Component {
               </td>
             </tr>
             {this.renderothertags()}
-            <tr>
-              <td className="table-txt">关联偶像：</td>
-              <td className="table-content">
-                <div className="idols">
-                  {linkidols.length > 0 ? linkidols : <p>无</p>}
-                </div>
-              </td>
-            </tr>
+            {/*<tr>*/}
+              {/*<td className="table-txt">关联偶像：</td>*/}
+              {/*<td className="table-content">*/}
+                {/*<div className="idols">*/}
+                  {/*{linkidols.length > 0 ? linkidols : <p>无</p>}*/}
+                {/*</div>*/}
+              {/*</td>*/}
+            {/*</tr>*/}
             <tr>
               <td className="table-txt">作品简介：</td>
               <td className="table-content">

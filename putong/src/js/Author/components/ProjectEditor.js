@@ -180,7 +180,7 @@ class ProjectEditor extends Component {
               <li className={router.split('-')[2] === 'Roles' ? 'current' : ''} onClick={() => setRouter('ProjectEditor-Setings-Roles')}>角色</li>
               <li className={router.split('-')[2] === 'Galleries' ? 'current' : ''} onClick={() => setRouter('ProjectEditor-Setings-Galleries')}>回忆</li>
               <li className={router.split('-')[2] === 'Numbers' ? 'current' : ''} onClick={() => setRouter('ProjectEditor-Setings-Numbers')}>数值</li>
-              <li className={router.split('-')[2] === 'Extras' ? 'current' : ''} onClick={this.toextras}>番外</li>
+              {/*<li className={router.split('-')[2] === 'Extras' ? 'current' : ''} onClick={this.toextras}>番外</li>*/}
             </ul>
             {this.rendertab()}
           </div>
