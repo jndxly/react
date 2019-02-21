@@ -17,12 +17,13 @@ function* requestProjects() {
   try {
     yield setAppLoading('正在获取剧本列表...');
     const token = yield getToken();
-    const result = yield Api.fetch('/v1/project/all', {
+    const result = yield Api.fetch('/myStory/list?author_id=1', {
       method: "GET",
+
       headers: { "Content-Type": "application/json", "Authorization": token }
     });
-    if (result.error === 0) {
-      const list = result.authorProjects;
+    if (result.error === 0 || result.code == 200) {
+      const list = result.data;
       yield put({
         type: 'RESPONSE_PROJECTS',
         list: list,
@@ -73,8 +74,9 @@ function* newProject(action) {
     const content = yield getContent();
     const project = { ...outline, content: JSON.stringify(content), idols: JSON.stringify(outline.idols), tags: outline.tags.join(',') };
     delete project.id;
+    project.author_id = 1;
     const token = yield getToken();
-    const result = yield Api.fetch('/v1/project/new', {
+    const result = yield Api.fetch('/myStory/add', {
       method: 'POST',
       headers: { "Content-Type": "application/json", "Authorization": token },
       body: JSON.stringify(project)

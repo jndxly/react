@@ -1564,12 +1564,12 @@ export function* requestProject(action) {
     yield put({ type: 'CLEAR_EDITOR' });
     const token = yield getToken();
     yield setAppLoading('正在获取剧本数据...');
-    const result = yield Api.fetch('/v1/project/' + action.id, {
+    const result = yield Api.fetch('/myStory/info?id=' + action.id, {
       method: 'GET',
       headers: { "Content-Type": "application/json", "Authorization": token }
     });
     if (result.error === 0) {
-      const project = result.project;
+      const project = result.data;
       project.tags = project.tags.split(',');
       const content = JSON.parse(project.content);
 
@@ -1628,7 +1628,7 @@ export function* requestProject(action) {
         type: 'RESPONSE_PROJECT_COMMENTS',
         comments,
       });
-      yield requestProjectComment(outline);
+      // yield requestProjectComment(outline);
       yield put({ type: 'NAVIGATE_TO_ROUTER', router: 'ProjectEditor-Editor' });
     } else {
       yield setAppMessage('error', '获取剧本数据失败,请重新再试！');
@@ -1964,7 +1964,7 @@ function* saveProject(action) {
     const content = yield getContent();
     // console.log(JSON.stringify(content));
     const project = { ...outline, content: JSON.stringify(content), idols: JSON.stringify(outline.idols), tags: outline.tags.join(',') };
-    const result = yield Api.fetch('/v1/project/', {
+    const result = yield Api.fetch('/myStory/edit', {
       method: 'POST',
       headers: { "Content-Type": "application/json", "Authorization": token },
       body: JSON.stringify(project)

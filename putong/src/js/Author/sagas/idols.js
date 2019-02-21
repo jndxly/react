@@ -170,7 +170,7 @@ function* watchSaveIdol() {
 }
 
 export default function* projects() {
-  yield fork(watchRequestIdols);
+  // yield fork(watchRequestIdols);
   yield fork(watchCommitIdols);
   yield fork(watchSaveIdol);
 }

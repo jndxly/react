@@ -1,7 +1,8 @@
 import COS from 'cos-js-sdk-v5';
 
 const config = {
-  host: '//10.4.145.144:8086/fileUpload/upload',
+    remoteHost:'//10.4.145.231:8086',
+  // host: '//10.4.145.144:8086/fileUpload/upload',
   // host: '172.168.11.124:8060',
   // host: '172.168.11.240:8060',
   token: '',
@@ -36,7 +37,7 @@ const config = {
     return new Promise(function(resolve, reject){
         let formData = new FormData();
         formData.append("file", file);
-        let url = config.host ;
+        let url = config.remoteHost + "/fileUpload/upload" ;
         // 实例化一个AJAX对象
         let xhr;
         if(window.XMLHttpRequest){

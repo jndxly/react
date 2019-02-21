@@ -136,8 +136,8 @@ class NewProject extends Component {
 
   tosteproles = () => {
     if (this.props.outline.image === '') {
-      // this.props.showMessage('error', '必须上传作品图片！');
-        this.setState({ step: 'roles' });
+      this.props.showMessage('error', '必须上传作品图片！');
+
     } else if (this.props.outline.title === '') {
       this.props.showMessage('error', '作品名称不能为空！');
     } else if (this.props.outline.tags === '') {
@@ -273,8 +273,8 @@ class NewProject extends Component {
               <p>关注官方微信服务号，提供行业分析、写作指南、问题咨询等服务。</p>
               <div className="ptwx-box">
                 <img src={ptwximg} alt="" />
-                <div className="ptwx-title">扑通扑通服务号</div>
-                <p>真实感爆棚的互动短信情景剧、超级治愈的恋爱体验平台——《扑通扑通》。和真人恋爱，约会，聊天，打电话、人人都成为恋爱制作人。欢迎加入扑通扑通官方群303880585。</p>
+                <div className="ptwx-title">恋恋服务号</div>
+                <p>真实感爆棚的互动短信情景剧、超级治愈的恋爱体验平台——《恋恋》。和真人恋爱，约会，聊天，打电话、人人都成为恋爱制作人。</p>
               </div>
             </div>
           </div>
