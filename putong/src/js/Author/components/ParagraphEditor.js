@@ -10,7 +10,7 @@ class ParagraphEditor extends Component {
     this.state = {
       width: '35%',
       preview: true,
-      placeholder: '扑通小课堂\n角色名前面需要加@，每条消息之间用空格隔开\n图片视频可以直接拖到文本框，会自动生成链接\n@韩梅梅\n月色真美\n\n@李雷\n是啊，月亮好大，像个饼。\n\n@韩梅梅\n#图片#\nhttp://aa.bb.cc.jpg\n\n@李雷\n#视频#\n假装此处有视频简介\nhttp://dd.ee.ff.mp4\n\n@我\nemmmmmm，教练，我要学扑通扑通编辑器~',
+      placeholder: '恋恋小课堂\n角色名前面需要加@，每条消息之间用空格隔开\n图片视频可以直接拖到文本框，会自动生成链接\n@韩梅梅\n月色真美\n\n@李雷\n是啊，月亮好大，像个饼。\n\n@韩梅梅\n#图片#\nhttp://aa.bb.cc.jpg\n\n@李雷\n#视频#\n假装此处有视频简介\nhttp://dd.ee.ff.mp4\n\n@我\nemmmmmm，教练，我要学恋恋恋恋编辑器~',
       toolbox: 'none',
       addtxt: null,
       showcomment: true,
@@ -1230,10 +1230,10 @@ class ParagraphEditor extends Component {
                     </td>
                   </tr>
                   <tr>
-                    <td>消耗扑通币：</td>
+                    <td>消耗恋恋币：</td>
                     <td>
                       <input className="form-control " maxLength="8" value={currentparagraph.coin} onBlur={(e) => this.initcoin(e, currentparagraph)} onChange={(e) => this.changecoin(e, currentparagraph)} />
-                      <p className="table-alert">1扑通币对应等待时间10分钟</p>
+                      <p className="table-alert">1恋恋币对应等待时间10分钟</p>
                     </td>
                   </tr>
                   <tr>

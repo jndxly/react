@@ -252,7 +252,7 @@ class Home extends Component {
         </div>
         {this.renderCrumbs()}
         {this.renderContent()}
-        <div className="footer">Copyright © 2018 All Right Reserverd    版权所有 上海扬讯计算机科技股份有限公司</div>
+        <div className="footer">Copyright © 2018 All Right Reserverd   </div>
       </div >
     );
   }

@@ -294,7 +294,7 @@ class Login extends Component {
     return (
       <div className="login">
         <div className="loginbox">
-          <div className="login-logo">PutongPutong · <b>作者专区</b></div>
+          <div className="login-logo">LianLian · <b>作者专区</b></div>
           {this.randerloginbox()}
         </div>
       </div>
