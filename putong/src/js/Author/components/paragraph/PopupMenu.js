@@ -162,5 +162,3 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(mapStateToProps, mapDispatchToProps)(PopupMenu);
 
 
-// WEBPACK FOOTER //
-// ./src/Author/components/paragraph/PopupMenu.js

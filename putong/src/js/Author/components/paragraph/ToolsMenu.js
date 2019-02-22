@@ -29,5 +29,3 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(mapStateToProps, mapDispatchToProps)(ToolsMenu);
 
 
-// WEBPACK FOOTER //
-// ./src/Author/components/paragraph/ToolsMenu.js

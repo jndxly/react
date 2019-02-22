@@ -648,7 +648,3 @@ export function drawWire(element, style) {
         context.restore();
     }
 }
-
-
-// WEBPACK FOOTER //
-// ./src/Author/components/paragraph/draw.js

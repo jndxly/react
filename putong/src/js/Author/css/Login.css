@@ -95,6 +95,10 @@
   margin: 18px 0;
 }
 
+.phone-input{
+  display:none;
+}
+
 .phone-group input, .code-group input, .pwd-group input {
   border: none;
   background: none;

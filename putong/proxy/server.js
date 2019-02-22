@@ -33,6 +33,9 @@ let projectData = require("./data/project")
 app.get("/v1/project/328", function(req, res){
     res.send(JSON.stringify(projectData));
 });
+app.get("/myStory/info", function(req, res){
+    res.send(JSON.stringify(projectData));
+});
 
 app.get("/v1/author/notices/0/15", function(req, res){
     res.send(JSON.stringify(noticeData));
