@@ -112,7 +112,7 @@ function* RequestNotices(action) {
       headers: { "Content-Type": "application/json", "Authorization": token }
     });
     if (result.error === 0) {
-      const notices = result.notices;
+      const notices = result.data;
       const totalnotices = result.rows;
       yield put({
         type: 'SET_APP_NOTICES',

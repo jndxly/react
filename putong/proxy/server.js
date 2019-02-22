@@ -20,15 +20,22 @@ let allData = require("./data/all")
 app.get("/v1/project/all", function(req, res){
     res.send(JSON.stringify(allData));
 });
+app.get("/v1/project/all", function(req, res){
+    res.send(JSON.stringify(allData));
+});
 
 let noticeData = require("./data/notice")
-app.get("/v1/author/notices/0/15", function(req, res){
-    res.send(JSON.stringify(noticeData));
+app.get("/myStory/list", function(req, res){
+    res.send(JSON.stringify(allData));
 });
 
 let projectData = require("./data/project")
 app.get("/v1/project/328", function(req, res){
     res.send(JSON.stringify(projectData));
+});
+
+app.get("/v1/author/notices/0/15", function(req, res){
+    res.send(JSON.stringify(noticeData));
 });
 
 app.get("/v1/project_comment/328", function(req, res){

@@ -23,7 +23,7 @@ function* requestProjects() {
       headers: { "Content-Type": "application/json", "Authorization": token }
     });
     if (result.error === 0 || result.code == 200) {
-      const list = result.data;
+      const list = result.data ;
       yield put({
         type: 'RESPONSE_PROJECTS',
         list: list,
