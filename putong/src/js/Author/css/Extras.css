@@ -147,7 +147,7 @@
     line-height: 30px;
     text-align: center;
     color: #fff;
-    background-color: #6f6dd8;
+    background-color: LightPink;
     border-radius: 2px;
     cursor: pointer;
 }
@@ -163,6 +163,6 @@
 }
 
 .total b {
-    color: #6f6dd8;
+    color: LightPink;
     padding: 0 5px;
 }

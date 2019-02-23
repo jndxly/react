@@ -56,7 +56,7 @@
 
 .btn-blue-s, .btn-blue-m, .btn-blue-l, .btn-green-s, .btn-green-m, .btn-green-l, .btn-red-s, .btn-red-m, .btn-red-l {
     display: inline-block;
-    background-color: #6f6dd8;
+    background-color: LightPink;
     text-align: center;
     cursor: pointer;
     color: #fff;
@@ -94,7 +94,7 @@
 }
 
 .btn-blue-s:hover, .btn-blue-m:hover, .btn-blue-l:hover {
-    background-color: #5856b8;
+    background-color: #FF33C1;
 }
 
 .btn-green-s:hover, .btn-green-m:hover, .btn-green-l:hover {
@@ -106,7 +106,7 @@
 }
 
 .btn-blue-s:active, .btn-blue-m:active, .btn-blue-l:active {
-    background-color: #6f6dd8;
+    background-color: LightPink;
 }
 
 .btn-green-s:active, .btn-green-m:active, .btn-green-l:active {
@@ -134,12 +134,12 @@
 
 .icon-btn:hover {
     background-color: #fff;
-    color: #6f6dd8;
+    color: LightPink;
 }
 
 .icon-btn:active {
     background-color: #fff;
-    color: #5856b8;
+    color: #FF33C1;
     font-weight: bold;
 }
 

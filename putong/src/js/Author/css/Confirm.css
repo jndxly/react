@@ -68,7 +68,7 @@
     line-height: 40px;
     font-size: 14px;
     font-weight: normal;
-    background-color: #6f6dd8;
+    background-color: LightPink;
     color: #fff;
 }
 
@@ -97,7 +97,7 @@
 
 .confirm-yes {
     color: #fff;
-    background-color: #6f6dd8;
+    background-color: LightPink;
 }
 
 .confirm-no {
@@ -107,7 +107,7 @@
 
 .confirm-yes:hover {
     color: #fff;
-    background-color: #5856b8;
+    background-color: #FF33C1;
 }
 
 .confirm-no:hover {
@@ -115,7 +115,7 @@
 }
 
 .confirm-yes:active {
-    background-color: #6f6dd8;
+    background-color: LightPink;
 }
 
 .confirm-no:active {

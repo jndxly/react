@@ -22,7 +22,7 @@
   -o-transition: left 0.5s ease-in-out;
   transition: left 0.5s ease-in-out;
   padding-top: 50px;
-  background-color: #6f6dd8;
+  background-color: LightPink;
 }
 
 .grouplist h3 {
@@ -86,7 +86,7 @@
 
 .group-item:hover, .group-item.current-group {
   background-color: #fff;
-  color: #6f6dd8;
+  color: LightPink;
 }
 
 .group-item:hover .group-delete, .group-item.current-group .group-delete, .group-item:hover .group-edit, .group-item.current-group .group-edit {

@@ -197,7 +197,7 @@
   border-radius: 4px 4px 0 0;
   line-height: 30px;
   padding: 0 20px;
-  background-color: #6f6dd8;
+  background-color: LightPink;
   color: #fff;
 }
 
@@ -235,18 +235,18 @@
 
 .toolicon:hover {
   background-color: #eee;
-  color: #6f6dd8;
+  color: LightPink;
 }
 
 .toolicon:active {
-  background-color: #5856b8;
+  background-color: #FF33C1;
   color: #fff;
 }
 
 .selction b {
   font-weight: normal;
   padding: 0 10px;
-  color: #6f6dd8;
+  color: LightPink;
   cursor: pointer;
 }
 
@@ -276,9 +276,9 @@
   height: 30px;
   line-height: 30px;
   text-align: center;
-  border: 1px solid #6f6dd8;
+  border: 1px solid LightPink;
   border-radius: 4px;
-  color: #6f6dd8;
+  color: LightPink;
   cursor: pointer;
   margin: 10px 0;
 }

@@ -20,7 +20,7 @@
 }
 
 .back:hover {
-  color: #6f6dd8;
+  color: LightPink;
   border: 2px solid #fff;
   background-color: #fff;
   -webkit-box-shadow: 0 0 3px 1px rgba(39, 54, 78, 0.1);
@@ -104,7 +104,7 @@
 }
 
 .tabs li.current {
-  color: #6f6dd8;
+  color: LightPink;
 }
 
 .paragraphs {

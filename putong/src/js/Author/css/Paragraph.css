@@ -26,12 +26,12 @@
 }
 
 .toolitem:hover {
-  background-color: #6f6dd8;
+  background-color: LightPink;
   color: #fff;
 }
 
 .toolitem:active {
-  background-color: #5856b8;
+  background-color: #FF33C1;
 }
 
 .searchbanner {
@@ -106,15 +106,15 @@
   text-align: center;
   font-size: 24px;
   margin-left: 15px;
-  color: #6f6dd8;
+  color: LightPink;
   cursor: pointer;
 }
 
 .searchup:hover, .searchdown:hover {
-  color: #5856b8;
+  color: #FF33C1;
 }
 
 .searchup:active, .searchdown:active {
-  color: #6f6dd8;
+  color: LightPink;
 }
 

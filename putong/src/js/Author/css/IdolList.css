@@ -62,7 +62,7 @@
 }
 
 .btn-pagination.current, .btn-pagination:active {
-  background-color: #6f6dd8;
+  background-color: LightPink;
   color: #fff;
 }
 
@@ -71,14 +71,14 @@
 }
 
 .btn-pagination.current:hover {
-  background-color: #6f6dd8;
+  background-color: LightPink;
 }
 
 .pageup, .pagedown {
   width: 30px;
   height: 30px;
   line-height: 26px;
-  color: #6f6dd8;
+  color: LightPink;
   text-align: center;
   border-radius: 30px;
   border: 2px solid #e5e5e5;
@@ -87,12 +87,12 @@
 }
 
 .pageup:hover, .pagedown:hover {
-  border: 2px solid #6f6dd8;
+  border: 2px solid LightPink;
 }
 
 .pageup:active, .pagedown:active {
-  background-color: #6f6dd8;
-  border: 2px solid #6f6dd8;
+  background-color: LightPink;
+  border: 2px solid LightPink;
   color: #fff;
 }
 

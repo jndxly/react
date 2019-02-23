@@ -20,10 +20,10 @@
     font-style: normal;
     margin: 0 5px;
     text-decoration: underline;
-    color: #6f6dd8;
+    color: LightPink;
     cursor: pointer;
 }
 
 .link-btn:hover {
-    color: #5856b8;
+    color: #FF33C1;
 }

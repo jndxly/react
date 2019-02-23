@@ -82,7 +82,7 @@
 }
 
 .current, .done {
-  color: #6f6dd8;
+  color: LightPink;
 }
 
 .newproject {
@@ -126,7 +126,7 @@
 }
 
 .add-tag-item:hover, .delete-tag-item:hover {
-  color: #6f6dd8;
+  color: LightPink;
 }
 
 .delete-tag-item {

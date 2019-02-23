@@ -107,7 +107,7 @@
 }
 
 .user-menu li:hover {
-  background-color: #6f6dd8;
+  background-color: LightPink;
   color: #fff;
 }
 
@@ -197,15 +197,15 @@
 .all-read {
   float: right;
   margin-right: 15px;
-  color: #6f6dd8;
+  color: LightPink;
 }
 
 .all-read:hover {
-  color: #5856b8;
+  color: #FF33C1;
 }
 
 .all-read:active {
-  color: #6f6dd8;
+  color: LightPink;
 }
 
 .notice-pop-item {
@@ -231,7 +231,7 @@
 }
 
 .notice-pop-item:hover {
-  color: #6f6dd8;
+  color: LightPink;
 }
 
 .more-notice {
@@ -268,7 +268,7 @@
 }
 
 .notice-banner p:hover {
-  color: #6f6dd8;
+  color: LightPink;
 }
 
 .notice-more {
@@ -282,7 +282,7 @@
 }
 
 .notice-more:hover {
-  color: #6f6dd8;
+  color: LightPink;
 }
 
 .crumbs, .crumbs-none {
@@ -323,7 +323,7 @@
 }
 
 .crumbs li:hover {
-  color: #6f6dd8;
+  color: LightPink;
 }
 
 .crumbs li:hover::after {
@@ -332,7 +332,7 @@
 
 .crumbs li:last-of-type {
   font-weight: bold;
-  color: #6f6dd8;
+  color: LightPink;
 }
 
 .crumbs li:last-of-type::after {
@@ -402,7 +402,7 @@
 }
 
 .tabs li.current {
-  color: #6f6dd8;
+  color: LightPink;
 }
 
 .total {
@@ -416,7 +416,7 @@
 }
 
 .total b {
-  color: #6f6dd8;
+  color: LightPink;
   padding: 0 5px;
 }
 

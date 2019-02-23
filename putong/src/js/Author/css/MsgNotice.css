@@ -33,7 +33,7 @@
 }
 
 .msg-row:hover {
-  color: #6f6dd8;
+  color: LightPink;
 }
 
 .msglist .msg-row:first-child {
@@ -58,7 +58,7 @@
 }
 
 .notread {
-  background-color: #6f6dd8;
+  background-color: LightPink;
 }
 
 .msg-title {
@@ -151,7 +151,7 @@ detailtext h1 {
 }
 
 .detailtext a, .detailtext a:hover {
-  color: #6f6dd8;
+  color: LightPink;
 }
 
 .detailtext li p {

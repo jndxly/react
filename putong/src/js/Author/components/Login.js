@@ -142,6 +142,9 @@ class Login extends Component {
         else if(password === ""){
             setLoginError('请输入密码！');
         }
+        else {
+            this.props.phoneLogin(this.state.code);
+        }
     }
 
     phonelogin = () => {
