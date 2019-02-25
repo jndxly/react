@@ -23,6 +23,18 @@ class ParagraphEditor extends Component {
       "NOWAIT":"无需等待",
       "WAIT":"等待",
     }
+
+    this.setSecsRef = element =>{
+      this.secsRef = element;
+    }
+
+    this.setMinsRef = element =>{
+      this.minsRef = element;
+    }
+
+    this.setHoursRef = element =>{
+      this.hoursRef = element;
+    }
   }
 
   //切换聊天对象
@@ -280,7 +292,18 @@ class ParagraphEditor extends Component {
   }
 
   changeaddtxttime = (e) => {
-    this.setState({ addtxt: { ...this.state.addtxt, time: e.target.value } });
+      const {  setAppMessage } = this.props;
+    let hour = this.hoursRef.value ? this.hoursRef.value : 0;
+    let min = this.minsRef.value ? this.minsRef.value : 0;
+    let secs = this.secsRef.value ? this.secsRef.value : 0;
+      this.setState({ addtxt: { ...this.state.addtxt, time:`${hour}:${min}:${secs}` } });
+    if(parseInt(hour) * 3600 + parseInt(min) * 50 + parseInt(secs) > 24 * 3600){
+        setAppMessage('error', '时间不能超过24小时！');
+
+        return;
+    }
+
+
   }
 
   changeaddtxttitle = (e) => {
@@ -328,6 +351,7 @@ class ParagraphEditor extends Component {
   toaddtxt = (currentparagraph) => {
     const position = this.state.position;
     const addtxt = this.state.addtxt;
+      const {  setAppMessage } = this.props;
     let paragraph = { ...currentparagraph };
     let index = paragraph.text.length - 1;
     if (position && position.id === currentparagraph.id) {
@@ -443,6 +467,13 @@ class ParagraphEditor extends Component {
             temptext +=  this.busyType.NOWAIT + '\n';
         }
         else if(addtxt.type == this.busyType.WAIT){
+
+          let arr = addtxt.time.split(":");
+            if(arr.length == 3 && parseInt(arr[0]) * 3600 + parseInt(arr[1]) * 50 + parseInt(arr[2]) > 24 * 3600){
+                setAppMessage('error', '时间不能超过24小时！');
+                return;
+            }
+
             temptext +=  this.busyType.WAIT + '\n';
             temptext +=  addtxt.time + '\n';
         }
@@ -877,7 +908,9 @@ class ParagraphEditor extends Component {
                         <tr>
                             <td>等待时间：</td>
                             <td>
-                                <input  value={this.state.addtxt.time}  onChange={this.changeaddtxttime}></input>&nbsp;&nbsp;分钟
+                                <input  className="wait-time"  onChange={this.changeaddtxttime} ref={this.setHoursRef}></input>&nbsp;时&nbsp;&nbsp;
+                                <input    className="wait-time"  onChange={this.changeaddtxttime} ref={this.setMinsRef}></input>&nbsp;分&nbsp;&nbsp;
+                                <input  className="wait-time"  onChange={this.changeaddtxttime} ref={this.setSecsRef}></input>&nbsp;秒&nbsp;&nbsp;
                             </td>
                         </tr>
                   }
