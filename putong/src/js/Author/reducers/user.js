@@ -7,6 +7,8 @@ const initialState = {
   phone: '',
   phonemsg_cookie: '',
   union: null,
+    author_id:"",
+
 };
 
 export default function user(state = initialState, action) {
@@ -16,6 +18,9 @@ export default function user(state = initialState, action) {
 
     case 'LOGGED_IN':
       return { ...action.user };
+
+      case 'SET_LOGIN_AUTHORID':
+        return {...action.author_id}
 
     case 'LOGGED_OUT':
       return initialState;

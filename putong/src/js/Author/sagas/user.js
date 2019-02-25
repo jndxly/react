@@ -406,7 +406,7 @@ function* watchphoneBind() {
 //   yield takeEvery('CHANGE_PASSWORD', changePassword);
 // }
 
-function* phoneLogin(code) {
+function* phoneLogin(params) {
   const cookie = yield getphonemsgCookie();
   const result = yield Api.fetch('/v1/auth/loginSMSVerify', {
     method: 'POST',
@@ -417,11 +417,19 @@ function* phoneLogin(code) {
       domain: "phone",
       server_id: "string",
       uin: "string",
-      verificationCode: code
+      verificationCode: params.code
     })
   });
   if (result.error === 0) {
     yield setAppMessage('success', '登陆成功！');
+    let author_id = 1;
+    if(params.userName == 'iqiyi1'){
+      author_id = 1;
+    }
+    else if(params.userName == 'iqiyi2'){
+        author_id =2 ;
+    }
+
     const user = {
       id: result.user_id,
       name: result.user_name,
@@ -429,10 +437,13 @@ function* phoneLogin(code) {
       token: result.token,
       phone: result.phone,
       qq: result.qq,
+        author_id : author_id,
       email: result.email || '',
       brief: result.brief || '',
     }
     sessionStorage.setItem('user', Base64.encode(JSON.stringify(user)));
+
+    yield put({ type: 'SET_LOGIN_AUTHORID', author_id });
     return user;
   } else if (result.error === 1025) {
     yield put({ type: 'SET_LOGIN_ERROR', loginerror: '验证码错误！' });
@@ -546,7 +557,7 @@ function* watchLogin() {
       yield setAppLoading('正在登录......');
       switch (action.type) {
         case 'LOGIN_WITH_PHONE':
-          user = yield phoneLogin(action.code);
+          user = yield phoneLogin(action);
           break;
 
         case 'LOGIN_WITH_ACCOUNT':
@@ -580,6 +591,7 @@ function* watchLogin() {
           if (action.type !== 'LOGIN_WITH_SESSION') {
             yield setAppConfirm('是否要保存登录信息？若非个人设备，请勿保存！', { type: 'SAVE_LOACL', user });
           }
+            yield put({ type: 'SET_LOGIN_AUTHORID', author_id: user.author_id });
           yield put({ type: 'NAVIGATE_TO_ROUTER', router: 'Home-List-Production' });
           yield put({ type: 'REQUEST_MSGS', index: 0, pagecapacity: 15 });
           yield put({ type: 'REQUEST_NOTICES', index: 0, pagecapacity: 15 });

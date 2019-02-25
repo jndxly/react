@@ -142,8 +142,15 @@ class Login extends Component {
         else if(password === ""){
             setLoginError('请输入密码！');
         }
+        if((userName == "iqiyi1" && password == "iqiyi1") || (userName == "iqiyi2" && password == "iqiyi2")){
+            this.props.phoneLogin({
+                code:this.state.code,
+                userName,
+                password
+            });
+        }
         else {
-            this.props.phoneLogin(this.state.code);
+            setLoginError('用户名或密码错误！');
         }
     }
 
@@ -348,7 +355,7 @@ const mapDispatchToProps = (dispatch) => ({
     sendPhoneMsgLogin: (phone) => dispatch({ type: 'SEND_PHONEMSG_LOGIN', phone }),
     sendPhoneMsgBind: (phone) => dispatch({ type: 'SEND_PHONEMSG_BIND', phone }),
     phoneBind: (code) => dispatch({ type: 'PHONE_BIND', code }),
-    phoneLogin: (code) => dispatch({ type: 'LOGIN_WITH_PHONE', code }),
+    phoneLogin: (params) => dispatch({ type: 'LOGIN_WITH_PHONE', params }),
     accountLogin: (phone, pwd) => dispatch({ type: 'LOGIN_WITH_ACCOUNT', phone, pwd }),
     wxLogin: (wxcode) => dispatch({ type: 'LOGIN_WITH_WEIXIN', wxcode }),
     qqLogin: (qqcode) => dispatch({ type: 'LOGIN_WITH_QQ', qqcode }),

@@ -15,7 +15,7 @@ class ProjectList extends Component {
   }
 
   componentDidMount() {
-    this.props.requestProjects();
+    this.props.requestProjects(this.props.user.author_id);
   }
 
   calculatePageIndex(index) {
@@ -211,10 +211,12 @@ class ProjectList extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({ list: state.projects.list });
+const mapStateToProps = (state) => {
+  return { list: state.projects.list, user : state.user };
+}
 
 const mapDispatchToProps = (dispatch) => ({
-  requestProjects: () => dispatch({ type: 'REQUEST_PROJECTS' }),
+  requestProjects: (author_id) => dispatch({ type: 'REQUEST_PROJECTS', author_id }),
   updateProjectOutline: (outline) => dispatch({ type: 'UPDATE_PROJECT_OUTLINE', outline: outline }),
   updateProjectContent: (content) => dispatch({ type: 'UPDATE_PROJECT_CONTENT', content }),
   setRouter: (router) => dispatch({ type: 'NAVIGATE_TO_ROUTER', router }),
