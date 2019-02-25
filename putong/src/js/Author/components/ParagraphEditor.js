@@ -18,6 +18,11 @@ class ParagraphEditor extends Component {
       move: false,
       showoptions: null,
     };
+
+    this.busyType = {
+      "NOWAIT":"无需等待",
+      "WAIT":"等待",
+    }
   }
 
   //切换聊天对象
@@ -228,6 +233,7 @@ class ParagraphEditor extends Component {
           break;
         }
       }
+
     }
     this.setState({
       toolbox,
@@ -240,6 +246,7 @@ class ParagraphEditor extends Component {
         text: '',
         gallery: '不收集',
         preview: '',
+          type:this.busyType.NOWAIT
       },
       position: { id, index: texteditor.selectionStart },
     });
@@ -260,12 +267,20 @@ class ParagraphEditor extends Component {
     this.setState({ addtxt: { ...this.state.addtxt, role: e.target.value } });
   }
 
+  changeaddtxttype = (e) => {
+    this.setState({ addtxt: { ...this.state.addtxt, type: e.target.value } });
+  }
+
   changeaddtxtgallery = (e) => {
     this.setState({ addtxt: { ...this.state.addtxt, gallery: e.target.value } });
   }
 
   changeaddtxttext = (e) => {
     this.setState({ addtxt: { ...this.state.addtxt, text: e.target.value } });
+  }
+
+  changeaddtxttime = (e) => {
+    this.setState({ addtxt: { ...this.state.addtxt, time: e.target.value } });
   }
 
   changeaddtxttitle = (e) => {
@@ -424,6 +439,15 @@ class ParagraphEditor extends Component {
           temptext += '\n\n@' + addtxt.role + '\n';
         }
         temptext += '#忙碌#\n' + addtxt.text + '\n';
+        if(addtxt.type == this.busyType.NOWAIT){
+            temptext +=  this.busyType.NOWAIT + '\n';
+        }
+        else if(addtxt.type == this.busyType.WAIT){
+            temptext +=  this.busyType.WAIT + '\n';
+            temptext +=  addtxt.time + '\n';
+        }
+
+
         if (index === 0 || paragraph.text === '') {
           temptext = temptext.substring(2);
         }
@@ -840,6 +864,24 @@ class ParagraphEditor extends Component {
                       <p className="table-alert">不得超过15字</p>
                     </td>
                   </tr>
+
+                  <tr>
+                      <td>类型：</td>
+                      <td>
+                          <input type="radio" value={this.busyType.NOWAIT} defaultChecked={this.state.addtxt.type == this.busyType.NOWAIT} onChange={this.changeaddtxttype} name="type" className="radio-type"></input>{this.busyType.NOWAIT}
+                          <input type="radio" value={this.busyType.WAIT} defaultChecked={this.state.addtxt.type == this.busyType.WAIT}  onChange={this.changeaddtxttype} name="type" className="radio-type"></input>{this.busyType.WAIT}
+                      </td>
+                  </tr>
+                  {
+                    this.state.addtxt.type == this.busyType.NOWAIT ? null:
+                        <tr>
+                            <td>等待时间：</td>
+                            <td>
+                                <input  value={this.state.addtxt.time}  onChange={this.changeaddtxttime}></input>&nbsp;&nbsp;分钟
+                            </td>
+                        </tr>
+                  }
+
                 </tbody>
               </table>
               <div className="toolbox-footer">
