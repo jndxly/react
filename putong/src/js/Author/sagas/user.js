@@ -406,7 +406,7 @@ function* watchphoneBind() {
 //   yield takeEvery('CHANGE_PASSWORD', changePassword);
 // }
 
-function* phoneLogin(params) {
+function* phoneLogin(action) {
   const cookie = yield getphonemsgCookie();
   const result = yield Api.fetch('/v1/auth/loginSMSVerify', {
     method: 'POST',
@@ -417,19 +417,18 @@ function* phoneLogin(params) {
       domain: "phone",
       server_id: "string",
       uin: "string",
-      verificationCode: params.code
+      verificationCode: action.code
     })
   });
   if (result.error === 0) {
     yield setAppMessage('success', '登陆成功！');
     let author_id = 1;
-    if(params.userName == 'iqiyi1'){
+    if(action.params.userName == 'iqiyi1'){
       author_id = 1;
     }
-    else if(params.userName == 'iqiyi2'){
+    else if(action.params.userName == 'iqiyi2'){
         author_id =2 ;
     }
-
     const user = {
       id: result.user_id,
       name: result.user_name,
@@ -444,6 +443,7 @@ function* phoneLogin(params) {
     sessionStorage.setItem('user', Base64.encode(JSON.stringify(user)));
 
     yield put({ type: 'SET_LOGIN_AUTHORID', author_id });
+
     return user;
   } else if (result.error === 1025) {
     yield put({ type: 'SET_LOGIN_ERROR', loginerror: '验证码错误！' });

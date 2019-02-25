@@ -13,11 +13,11 @@ function* getProject(id) {
   return yield select(store => store.projects.list.find(p => p.id === id));
 }
 
-function* requestProjects(author_id) {
+function* requestProjects(action) {
   try {
     yield setAppLoading('正在获取剧本列表...');
     const token = yield getToken();
-    const result = yield Api.fetch(`/myStory/list?author_id=${author_id}`, {
+    const result = yield Api.fetch(`/myStory/list?author_id=${action.author_id}`, {
       method: "GET",
 
       headers: { "Content-Type": "application/json", "Authorization": token }

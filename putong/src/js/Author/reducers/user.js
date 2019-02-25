@@ -20,7 +20,7 @@ export default function user(state = initialState, action) {
       return { ...action.user };
 
       case 'SET_LOGIN_AUTHORID':
-        return {...action.author_id}
+        return {...state, author_id : action.author_id}
 
     case 'LOGGED_OUT':
       return initialState;
