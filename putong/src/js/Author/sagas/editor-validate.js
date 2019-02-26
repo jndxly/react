@@ -1169,7 +1169,7 @@ export function validateProjectContent(content, extras) {
 
     if (lines[2]) {
       current_line_number++;
-      addError(ValidationCode.BusyNodeFormatError, { text: lines[2] });
+      // addError(ValidationCode.BusyNodeFormatError, { text: lines[2] });
       current_line_number += lines.length - 3;
     }
   }
