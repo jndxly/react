@@ -1,0 +1,27 @@
+.text-popup {
+  display: inline-block;
+  width: 240px;
+  animation: textPopup 5s;
+  color: red;
+  user-select: none;
+  position: absolute;
+  z-index: 99;
+  text-align: center;
+  //background-image: linear-gradient(to right, red, green, red);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-size: 200% 100%;
+}
+@keyframes textPopup {
+  0%, 100% {
+    opacity: 0;
+    background-position: 0 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50px);
+    background-position: -100% 0;
+  }
+}
