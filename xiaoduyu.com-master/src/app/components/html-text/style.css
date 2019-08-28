@@ -1,0 +1,102 @@
+.content {
+  width: 100%;
+  font-size: 14px;
+  /*
+  a{
+    color:#0073ff !important;
+  }
+
+  p{
+    margin:0px;
+    padding:0px;
+    min-height: 15px;
+    word-wrap: break-word;
+    word-break: normal;
+  }
+
+
+  ul{
+    margin-left:20px;
+  }
+
+  pre{
+    width: 100%;
+    overflow-x: auto;
+    margin:10px 0 10px 0;
+  }
+
+  img{
+    max-width: 100%;
+    margin-top:15px;
+  }
+
+  blockquote{
+    padding: 0 15px 0 15px;
+    color: #6a737d;
+    border-left: 4px solid #dfe2e5;
+  }
+  */ }
+  .content p {
+    margin: 0px;
+    padding: 0px;
+    min-height: 15px;
+    word-wrap: break-word;
+    word-break: normal; }
+  .content embed, .content iframe {
+    width: 100%;
+    min-height: 420px;
+    border: none; }
+    @media (min-width: 0px) and (max-width: 767px) {
+      .content embed, .content iframe {
+        min-height: 220px; } }
+  .content iframe[src^="//music.163.com"] {
+    min-height: auto; }
+
+.max-height {
+  max-height: 150px;
+  overflow: hidden; }
+
+.expand-button {
+  padding: 10px 0 5px 0; }
+
+/*
+.more-tips{
+  width: 100%;
+  text-align: center;
+  height: 100px;
+  padding-top:20px;
+  color:#007bff;
+
+  .lock{
+    background-image: url(./images/lock.png);
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left:20px;
+  }
+
+  .sign{
+    margin-top:15px;
+    > a{
+      margin:0 10px 0 10px;
+    }
+  }
+
+}
+*/
+/*
+:global(#dark-theme){
+  .content{
+    h2{
+      border-bottom: 1px solid #393f4e;
+    }
+    blockquote{
+      padding: 0 15px 0 15px;
+      color: #606983;
+      border-left: 4px solid #717f92;
+    }
+  }
+}
+*/
+
+/*# sourceMappingURL=style.css.map */

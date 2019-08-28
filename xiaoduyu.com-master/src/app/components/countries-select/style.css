@@ -1,0 +1,45 @@
+/*
+Error: Invalid GBK character "\xE5"
+        on line 6 of style.scss
+
+1: .select {
+2:   border-radius: 4px;
+3:   height: 38px;
+4:   border:1px solid #ced4da;
+5:   padding-right: 25px;
+6:   /*很关键：将默认的select选择框样式清除*\/
+7:   appearance:none;
+8:   -moz-appearance:none;
+9:   -webkit-appearance:none;
+10:   color: #484848;
+11:   background-image: url("./images/select.png");
+
+Backtrace:
+style.scss:6
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/util.rb:1043:in `rescue in block in find_encoding_error'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/util.rb:1040:in `block in find_encoding_error'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/util.rb:1039:in `each'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/util.rb:1039:in `each_with_index'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/util.rb:1039:in `find_encoding_error'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/util.rb:767:in `check_sass_encoding'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/engine.rb:444:in `check_encoding!'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/engine.rb:400:in `_to_tree'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/engine.rb:307:in `render_with_sourcemap'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/plugin/compiler.rb:462:in `update_stylesheet'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/plugin/compiler.rb:209:in `each'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/plugin.rb:82:in `update_stylesheets'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/exec/sass_scss.rb:340:in `watch_or_update'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/exec/sass_scss.rb:51:in `process_result'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/exec/base.rb:52:in `parse'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/exec/base.rb:19:in `parse!'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/bin/scss:13:in `<top (required)>'
+E:/soft/Ruby24-x64/bin/scss:23:in `load'
+E:/soft/Ruby24-x64/bin/scss:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid GBK character \"\xE5\"\A         on line 6 of style.scss\A \A 1: .select {\A 2:   border-radius: 4px;\A 3:   height: 38px;\A 4:   border:1px solid #ced4da;\A 5:   padding-right: 25px;\A 6:   /*很关键：将默认的select选择框样式清除*/\A 7:   appearance:none;\A 8:   -moz-appearance:none;\A 9:   -webkit-appearance:none;\A 10:   color: #484848;\A 11:   background-image: url(\"./images/select.png\");"; }

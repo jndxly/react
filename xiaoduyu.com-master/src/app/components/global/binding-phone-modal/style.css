@@ -1,0 +1,20 @@
+.body {
+  padding: 20px; }
+  .body .form select {
+    position: absolute;
+    width: 30%;
+    height: 49px;
+    border-right: 1px solid #efefef; }
+  .body .form input:first-of-type {
+    padding-left: 30%;
+    text-indent: 15px; }
+  .body .form input {
+    padding: 0px; }
+
+.footer {
+  text-align: right; }
+  .footer input {
+    border-radius: 3px;
+    margin-left: 15px; }
+
+/*# sourceMappingURL=style.css.map */

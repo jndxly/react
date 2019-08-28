@@ -1,0 +1,12 @@
+.container {
+  font-size: 12px;
+  line-height: 160%; }
+  .container a {
+    margin-right: 10px; }
+  .container .beian {
+    background-image: url("./images/beian.png");
+    background-repeat: no-repeat;
+    padding-left: 20px;
+    background-size: 16px; }
+
+/*# sourceMappingURL=index.css.map */

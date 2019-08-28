@@ -1,0 +1,12 @@
+.body {
+  padding: 15px; }
+  .body a {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 12px; }
+    .body a b {
+      font-size: 14px; }
+    .body a:last-child {
+      margin-bottom: 0px; }
+
+/*# sourceMappingURL=index.css.map */

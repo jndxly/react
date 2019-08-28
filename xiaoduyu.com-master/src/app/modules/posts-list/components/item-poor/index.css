@@ -1,0 +1,11 @@
+.a {
+  padding-left: 50px !important; }
+  .a img {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-color: #efefef;
+    margin-left: -35px;
+    border-radius: 50%; }
+
+/*# sourceMappingURL=index.css.map */

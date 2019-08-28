@@ -1,0 +1,18 @@
+.list {
+  width: 100%; }
+
+.bottom-bar {
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  height: 50px; }
+  .bottom-bar .bottom-bar-main {
+    background-color: #fff;
+    height: 50px; }
+
+.more {
+  text-align: center;
+  padding: 10px 0 10px 0; }
+
+/*# sourceMappingURL=index.css.map */

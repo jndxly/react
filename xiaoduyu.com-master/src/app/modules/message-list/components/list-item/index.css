@@ -1,0 +1,40 @@
+.item {
+  padding: 10px 10px 10px 50px;
+  min-height: 50px; }
+  .item .avatar {
+    float: left;
+    margin-left: -40px; }
+    .item .avatar img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%; }
+  .item .nickname {
+    font-size: 12px; }
+  .item .action > a {
+    margin-right: 10px;
+    font-size: 12px; }
+  .item .content {
+    display: inline-block;
+    padding: 5px 10px 5px 10px;
+    border-radius: 6px;
+    background-color: #efefef; }
+
+.right {
+  padding-left: 10px;
+  padding-right: 50px;
+  text-align: right; }
+  .right .avatar {
+    float: right;
+    margin-right: -40px; }
+  .right .content {
+    background-color: #cbddff;
+    text-align: left; }
+
+:global(#dark-theme) .item .content {
+  background-color: #373d4a;
+  color: #949fb7; }
+:global(#dark-theme) .right .content {
+  background-color: #35533a;
+  color: #91c199; }
+
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,12 @@
+.avatar {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px; }
+  .avatar img {
+    width: 100px;
+    border-radius: 50%; }
+
+.upload {
+  text-align: center; }
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,68 @@
+.layer {
+  padding: 30px 30px 20px 30px; }
+  .layer input[type="text"],
+  .layer input[type="password"],
+  .layer input[type="submit"] {
+    width: 100%;
+    margin-bottom: 15px; }
+
+.header {
+  padding: 20px 20px 0 20px; }
+
+.other-sign-in {
+  text-align: center;
+  overflow: hidden;
+  margin: 20px 0 20px 0; }
+  .other-sign-in > span {
+    position: relative;
+    padding: 0 15px 0 15px; }
+    .other-sign-in > span:before {
+      content: "";
+      position: absolute;
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+      border-bottom-color: #e4e4e4;
+      top: 50%;
+      right: 100%;
+      width: 5000px; }
+    .other-sign-in > span:after {
+      content: "";
+      position: absolute;
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+      border-bottom-color: #e4e4e4;
+      top: 50%;
+      left: 100%;
+      width: 5000px; }
+
+.social {
+  text-align: center;
+  margin-bottom: 10px; }
+  .social a {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px; }
+  .social .icon, .social .weibo, .social .qq, .social .github, .social .wechat {
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 40px; }
+  .social .weibo {
+    background-image: url(./images/weibo.png); }
+  .social .qq {
+    background-image: url(./images/qq.png); }
+  .social .github {
+    background-image: url(./images/github.png); }
+  .social .wechat {
+    background-image: url(./images/wechat.png); }
+
+.agreement {
+  text-align: center;
+  margin: 30px 0 0 0; }
+
+:global(#dark-theme) .other-sign-in > span:before {
+  border-bottom-color: #393f4e; }
+:global(#dark-theme) .other-sign-in > span:after {
+  border-bottom-color: #393f4e; }
+
+/*# sourceMappingURL=style.css.map */

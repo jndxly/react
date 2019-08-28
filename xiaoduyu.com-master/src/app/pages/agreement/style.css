@@ -1,0 +1,15 @@
+.container {
+  padding: 20px;
+  border-radius: 5px;
+  line-height: 200%; }
+  .container h1 {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold; }
+  .container h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0px; }
+
+/*# sourceMappingURL=style.css.map */

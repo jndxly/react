@@ -1,0 +1,16 @@
+.button {
+  background-size: 13px;
+  background-repeat: no-repeat;
+  background-position: left center; }
+  .button:hover span {
+    color: #4170ea; }
+
+.active span {
+  color: #4170ea; }
+
+.loading {
+  position: absolute;
+  margin-top: -16px;
+  margin-left: -16px; }
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,45 @@
+/*
+Error: Invalid GBK character "\xE2"
+        on line 129 of index.scss
+
+124: 
+125:       &:after{
+126:         // color:#ABA8A6;
+127:         font-size: 8px;
+128:         margin:0 8px 0 8px;
+129:         content: '•';
+130:       }
+131: 
+132:       &:last-child:after{
+133:         content: '';
+134:       }
+
+Backtrace:
+index.scss:129
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/util.rb:1043:in `rescue in block in find_encoding_error'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/util.rb:1040:in `block in find_encoding_error'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/util.rb:1039:in `each'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/util.rb:1039:in `each_with_index'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/util.rb:1039:in `find_encoding_error'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/util.rb:767:in `check_sass_encoding'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/engine.rb:444:in `check_encoding!'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/engine.rb:400:in `_to_tree'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/engine.rb:307:in `render_with_sourcemap'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/plugin/compiler.rb:462:in `update_stylesheet'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/plugin/compiler.rb:209:in `each'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/plugin.rb:82:in `update_stylesheets'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/exec/sass_scss.rb:340:in `watch_or_update'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/exec/sass_scss.rb:51:in `process_result'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/exec/base.rb:52:in `parse'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/exec/base.rb:19:in `parse!'
+E:/soft/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/bin/scss:13:in `<top (required)>'
+E:/soft/Ruby24-x64/bin/scss:23:in `load'
+E:/soft/Ruby24-x64/bin/scss:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid GBK character \"\xE2\"\A         on line 129 of index.scss\A \A 124: \A 125:       &:after{\A 126:         // color:#ABA8A6;\A 127:         font-size: 8px;\A 128:         margin:0 8px 0 8px;\A 129:         content: '•';\A 130:       }\A 131: \A 132:       &:last-child:after{\A 133:         content: '';\A 134:       }"; }

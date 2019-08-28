@@ -1,0 +1,16 @@
+.tab-bar {
+  background-color: #fff;
+  border-bottom: 1px solid #efefef;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  padding: 5px;
+  margin-top: 10px; }
+
+.search-button {
+  width: 80px;
+  font-size: 14px; }
+
+.input {
+  border: none !important; }
+
+/*# sourceMappingURL=index.css.map */

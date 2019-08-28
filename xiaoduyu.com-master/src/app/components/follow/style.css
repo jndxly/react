@@ -1,0 +1,10 @@
+.hover span:nth-child(1) {
+  display: inherit; }
+.hover span:nth-child(2) {
+  display: none; }
+.hover:hover span:nth-child(1) {
+  display: none; }
+.hover:hover span:nth-child(2) {
+  display: inherit; }
+
+/*# sourceMappingURL=style.css.map */

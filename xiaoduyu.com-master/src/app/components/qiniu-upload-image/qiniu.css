@@ -1,0 +1,16 @@
+.file {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  line-height: 100%; }
+  .file:hover span {
+    background-color: #efefef; }
+  .file input {
+    position: absolute;
+    font-size: 100px;
+    line-height: 300%;
+    right: 0;
+    top: 0;
+    opacity: 0; }
+
+/*# sourceMappingURL=qiniu.css.map */

@@ -1,0 +1,31 @@
+.comment-list {
+  padding: 0 !important; }
+  .comment-list div:first-child {
+    border: none !important; }
+
+.editor-comment {
+  margin-top: 10px;
+  border-radius: 4px;
+  overflow: hidden; }
+
+.nickname {
+  padding: 20px;
+  padding-left: 70px;
+  min-height: 50px; }
+  .nickname img {
+    position: absolute;
+    border-radius: 50%;
+    margin-left: -60px; }
+
+.author-info {
+  padding-left: 60px;
+  min-height: 50px; }
+
+.avatar {
+  position: absolute;
+  margin-left: -60px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; }
+
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,29 @@
+
+.button{
+  // background-image: url('./images/like.png');
+  background-size: 13px;
+  background-repeat: no-repeat;
+  background-position: left center;
+  // padding-left: 17px;
+  
+  &:hover{
+    // background-image: url('./images/like-active.png');
+    span{
+      color:#4170ea;
+    }
+  }
+}
+
+.active{
+  // background-image: url('./images/like-active.png');
+  span{
+    color:#4170ea;
+  }
+}
+
+
+.loading{
+  position: absolute;
+  margin-top:-16px;
+  margin-left:-16px;
+}
