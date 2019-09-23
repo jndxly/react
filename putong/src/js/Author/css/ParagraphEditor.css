@@ -310,3 +310,50 @@
   width:50px;
   text-align: right;
 }
+
+.phone-label{
+  width:80px;
+  display:inline-block;
+}
+.subtitle-wrapper{
+  margin-top:10px;
+}
+.add-phone{
+  width:unset;
+}
+.phone-process{
+  background-color: #f5f5f5;
+  border-radius: 3px;
+  padding:9px;
+  margin-top:10px;
+  position:relative;
+  margin-right:50px;
+}
+.phone-process .deleteoption{
+  position: absolute;
+  right:-40px;
+  bottom:0px;
+}
+
+.middle-content{
+  overflow-y: auto;
+  max-height:650px;
+}
+
+.at-role-menu{
+  position:absolute;
+  display:none;
+  max-height: 100px;
+  padding:4px;
+  border: 1px solid #c1c6cc;
+  background-color: #fff;
+  z-index:10;
+  width:200px;
+}
+.at-role-menu li{
+  list-style: none;
+}
+.at-role-menu li:hover{
+  background: #C9DBF2;
+  cursor: pointer;
+}

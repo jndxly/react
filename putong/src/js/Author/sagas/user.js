@@ -408,25 +408,40 @@ function* watchphoneBind() {
 
 function* phoneLogin(action) {
   const cookie = yield getphonemsgCookie();
-  const result = yield Api.fetch('/v1/auth/loginSMSVerify', {
-    method: 'POST',
-    header: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      app_data: "string",
-      cookie: cookie,
-      domain: "phone",
-      server_id: "string",
-      uin: "string",
-      verificationCode: action.code
-    })
-  });
+  // const result = yield Api.fetch('/v1/auth/loginSMSVerify', {
+  //   method: 'POST',
+  //   header: { "Content-Type": "application/json" },
+  //   body: JSON.stringify({
+  //     app_data: "string",
+  //     cookie: cookie,
+  //     domain: "phone",
+  //     server_id: "string",
+  //     uin: "string",
+  //     verificationCode: action.code
+  //   })
+  // });
+
+    const result = {
+        "error":0,
+        "token":"eiwvKCwA5sMtNLkGlauOiwMN0/a0+E/9kxbHTrUufnxANTc2NDc0MDUx",
+        "app_data":"",
+        "user_id":56059,
+        "user_name":"用户56059",
+        "user_profile":"http://img4.imgtn.bdimg.com/it/u=2802024393,2096819393&fm=200&gp=0.jpg",
+        "first":false,
+        "phone":"15850035363",
+        "qq":"",
+        "email":"",
+        "brief":""
+    }
+
   if (result.error === 0) {
     yield setAppMessage('success', '登陆成功！');
     let author_id = 1;
-    if(action.params.userName == 'iqiyi1'){
+    if(action.params.userName == 'ihchen1'){
       author_id = 1;
     }
-    else if(action.params.userName == 'iqiyi2'){
+    else if(action.params.userName == 'ihchen2'){
         author_id =2 ;
     }
     const user = {

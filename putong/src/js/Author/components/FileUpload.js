@@ -15,7 +15,26 @@ class FileUpload extends Component {
 
   uploadFile = (e) => {
     if (e.target.value !== '') {
-      this.props.uploadFile(e.target.files[0], this.props.filetype, (path) => { this.props.getuploadurl(path) });
+      let fileType = this.props.filetype;
+      if(this.props.filetype == 'file'){
+          let type = e.target.files[0].name.slice(e.target.files[0].name.lastIndexOf(".")).toLowerCase();
+          switch(type){
+              case '.jpg':
+              case '.jpeg':
+              case '.png':
+              case '.gif':
+                  fileType = "img1";
+                  break;
+              case '.mp4':
+                fileType = "video"
+                  break;
+              case '.mp3':
+                fileType = "audio";
+                break;
+          }
+      }
+
+      this.props.uploadFile(e.target.files[0], fileType, (path) => { this.props.getuploadurl(path) });
     }
     this.setState({ file: '' });
   }
@@ -31,21 +50,21 @@ class FileUpload extends Component {
   render() {
     if (this.props.filetype === 'img1') {
       return (
-        <label id="uploadbox1">
+        <label className="uploadbox1">
           <img src={this.props.src ? this.props.src + '?imageView2/1/w/400/q/85!' : defaultimg1} alt="" />
           <input className="upload" type="file" value={this.state.file} onChange={this.uploadFile} />
         </label>
       )
     } else if (this.props.filetype === 'img2') {
       return (
-        <label id="uploadbox2">
+        <label className="uploadbox2">
           <img src={this.props.src ? this.props.src + '?imageView2/1/w/216/h/384/q/85!' : defaultimg2} alt="" />
           <input className="upload" type="file" value={this.state.file} onChange={this.uploadFile} />
         </label>
       )
     } else if (this.props.filetype === 'video') {
       return (
-        <label id="uploadbox2">
+        <label className="uploadbox2">
           <div className="uploadinfo"><span className="fa fa-check icon-ok"></span><p>预览图生成中...</p></div>
           <img src={this.props.src ? this.props.src + '.0_0.p0.jpg' : defaultimg2} alt=""  />
           <input className="upload" type="file" value={this.state.file} onChange={this.uploadFile} />
@@ -53,7 +72,7 @@ class FileUpload extends Component {
       )
     } else {
       return (
-        <label id="uploadbox1">
+        <label className="uploadbox1">
           {this.props.src ? <div className="uploadinfo"><span className="fa fa-check icon-ok"></span><p>上传成功</p></div> : <img src={defaultimg1} alt="" />}
           <input className="upload" type="file" onChange={this.uploadFile} />
         </label>

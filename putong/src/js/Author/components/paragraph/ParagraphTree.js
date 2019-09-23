@@ -403,6 +403,21 @@ class ParagraphTree extends Component {
     return `①${title1 ? title1 : '数值选项1'}\n②${title2 ? title2 : '数值选项2'}${selections.length > 2 ? '\n' : ''}`
   }
 
+  countImageVedio(content){
+      let info = {
+          vedio:0,
+          image:0
+      };
+
+      if(content){
+          info.vedio = content.split(".mp4").length - 1;
+          info.image = content.split(".jpg").length - 1 + content.split(".png").length - 1 +
+              content.split(".gif").length - 1 + content.split(".jpeg").length - 1;
+      }
+      return info;
+
+  }
+
   visit(paragraphs) {
     const { roles } = this.props.content;
     const branchPositions = this.measure(paragraphs);
@@ -443,6 +458,9 @@ class ParagraphTree extends Component {
       } else {
         switch (paragraph.type) {
           case 'Node': {
+
+            let info = this.countImageVedio(paragraph.text);
+
             const node = {
               id: paragraph.id,
               type: isVisited ? 'Link' : 'Node',
@@ -450,6 +468,7 @@ class ParagraphTree extends Component {
               image: images[paragraph.chat_id],
               x: x,
               y: y,
+                info,
               parent: parent,
             };
             if (parent) {

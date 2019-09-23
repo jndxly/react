@@ -142,7 +142,7 @@ class Login extends Component {
         else if(password === ""){
             setLoginError('请输入密码！');
         }
-        if((userName == "iqiyi1" && password == "iqiyi1") || (userName == "iqiyi2" && password == "iqiyi2")){
+        if((userName == "ihchen1" && password == "ihchen1") || (userName == "ihchen2" && password == "ihchen2")){
             this.props.phoneLogin({
                 code:this.state.code,
                 userName,

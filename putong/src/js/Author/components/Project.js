@@ -43,7 +43,7 @@ class Project extends Component {
         return (
             <div className="list-row">
                 <div className="flex-2">
-                    <img className="project_pic" src={outline.image === '' ? this.state.defaultimg : outline.image + '?imageView2/1/w/400/q/85!'} alt="封面" />
+                    <img className="project_pic" src={outline.image === '' ? this.state.defaultimg : outline.image } alt="封面" />
                 </div>
                 <div className="projcte-title flex-3"><p>{outline.title}</p></div>
                 <div className="flex-3">{outline.tags.replace(/,/g, '，')}</div>

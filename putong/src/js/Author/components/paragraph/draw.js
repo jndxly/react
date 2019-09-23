@@ -149,11 +149,25 @@ export function drawNode(element, style) {
         // 绘制标题
         context.save();
         if (disabled) {
-            useDisabledTextStyle();
+            context.textAlign = 'center';
         } else {
-            useInversedTextStyle();
+            context.textAlign = 'left';
         }
-        context.fillText(title.length > 6 ? (title.substring(0, 6) + '...') : title, x + 18, y);
+        context.font = '12px Arial';
+        context.fillStyle = '#333333';
+        context.textBaseline = 'middle';
+
+
+        if(element.info && (element.info.image > 0 || element.info.vedio > 0)){
+            context.fillText(title.length > 10 ? (title.substring(0, 7) + '...') : title, x - 25 , y - 10 );
+            let formatTitle = "";
+            formatTitle +=  `视频:${element.info.vedio} ` +  `图片:${element.info.image}`;
+            context.fillText(formatTitle.length > 10 ? (formatTitle.substring(0, 7) + '...') : formatTitle, x -25 , y+10);
+        }
+        else{
+            context.fillText(title.length > 10 ? (title.substring(0, 7) + '...') : title, x - 25, y );
+        }
+
         context.restore();
     }
 

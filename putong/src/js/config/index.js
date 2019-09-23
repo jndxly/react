@@ -1,7 +1,7 @@
 import COS from 'cos-js-sdk-v5';
 
 const config = {
-    remoteHost:'//10.4.145.231:8086',
+    remoteHost:'//10.127.23.22:13099',
   // host: '//10.4.145.144:8086/fileUpload/upload',
   // host: '172.168.11.124:8060',
   // host: '172.168.11.240:8060',

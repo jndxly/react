@@ -365,4 +365,20 @@
   cursor: pointer;
 }
 
+.hidden-text{
+  display:none !important;
+}
+
+.preview .chat-box .msg-focus{
+  border:1px solid #84d476;
+  color:#84d476 ;
+  background-color: #fff;
+  background: linear-gradient(45deg, #fff, #fff);
+}
+.msg-focus .meettype{
+  color:#84d476 ;
+}
+.msg-focus .meetbtn{
+  background-color: #84d476;
+}
 

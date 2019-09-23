@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import FileUpload from './FileUpload';
 import '../css/ParagraphEditor.css';
 import Preview from './Preview';
+import PhoneProcess from './PhoneProcess';
+import Immutable from 'immutable';
+import positionUtil from '../utils/positionUtil'
+import LianLianUtil from "../utils/lianlianUtil";
 
 class ParagraphEditor extends Component {
   constructor(props) {
@@ -17,7 +21,11 @@ class ParagraphEditor extends Component {
       position: null,
       move: false,
       showoptions: null,
+      scrollTopText:null,//textarea滚动事件，当前最顶端显示的text值
+      focusText:'',//当前光标位置所属的block，文本值。preview应该高亮哪个文本
     };
+
+      this.shouldDispatchScroll = true;//如果是因为preveiw滚动事件导致textarea scrollTop的调整，则置为false，此时不触发scrollTop
 
     this.busyType = {
       "NOWAIT":"无需等待",
@@ -34,6 +42,12 @@ class ParagraphEditor extends Component {
 
     this.setHoursRef = element =>{
       this.hoursRef = element;
+    }
+    this.setEditorWrapper = element =>{
+      this.editorWrapper = element;
+    }
+    this.setEditorDiv = element =>{
+      this.editorDiv = element;
     }
   }
 
@@ -63,7 +77,7 @@ class ParagraphEditor extends Component {
     this.props.updateParagraph(paragraph);
   }
 
-  initendtext = (paragraph) => {
+    initendtext = (paragraph) => {
     if (paragraph.type === 'End') {
       if (paragraph.text === '') {
         paragraph.text = '结局描述';
@@ -79,6 +93,118 @@ class ParagraphEditor extends Component {
     this.setState({ move });
     paragraph.text = e.target.value;
     this.props.updateParagraph(paragraph);
+  }
+
+  roleClick = (role, e)=>{
+    // let index = this.refs.texteditor.selectionStart;
+    // let pre = this.refs.texteditor.value.substr(0, index), last = this.refs.texteditor.value.substr(index);
+    //   this.refs.texteditor.value = pre + role + last;
+      let selectDom = document.getElementById("atRoleMenu");
+      selectDom.style.display = "none";
+      this.refs.texteditor.focus();
+      document.execCommand("insertText", false, role)
+  }
+
+  hideRoleTips = ()=>{
+    document.getElementById("atRoleMenu").style.display = "none"
+  }
+
+    textAreaKeyUpHandler = (content)=>{
+      let focusText = this.getBlockText(content);
+      if(focusText){
+        focusText = focusText.trim();
+      }
+      this.setState(
+          {focusText}
+      )
+  }
+
+  /*根据当前光标位置获取当前是哪个block*/
+  getBlockText(content){
+      let lineHeight = parseInt(positionUtil._getStyle(this.refs.texteditor, "line-height"));//获取textarea的lineheight
+
+      var editor = this.refs.texteditor;
+      let pos = positionUtil.getInputPositon(editor);
+      positionUtil.destroyDiv();
+
+
+      let textEditor = this.refs.texteditor;
+      let editorPos = textEditor.getBoundingClientRect();
+
+      let index = (pos.top - editorPos.top)/lineHeight;
+
+      let arr = content.split("\n");
+
+      let start ,end;
+      start = end= index;
+      while(arr[start] && start >= 0){
+          start--;
+      }
+      while(arr[end]){
+          end++;
+      }
+      let blockText = "";
+      for(let i = start + 1; i < end; i++){
+          blockText += arr[i] + "\n";
+      }
+      return blockText.substr(0, blockText.length - 1);
+  }
+
+
+  keyUpHandler = (e, paragraph) =>{
+      var editor = this.refs.texteditor;
+      if (e.shiftKey && e.keyCode == 50) {
+
+          this.displayAtMenu(editor);
+      }
+
+  }
+
+  displayAtMenu(editor){
+    let editorWrapper = this.editorWrapper;
+    let pos = positionUtil.getInputPositon(editor);
+      positionUtil.destroyDiv();
+    let displayBottom = true;
+    if(pos.top > window.outerHeight / 2){
+      displayBottom = false;
+    }
+    let parentPos = editorWrapper.getBoundingClientRect();
+
+    let selectDom = document.getElementById("atRoleMenu");
+      selectDom.style.left = pos.left - parentPos.left + "px";
+    if(displayBottom){
+
+        selectDom.style.top = pos.bottom - parentPos.top + "px";
+        selectDom.style.bottom =  "unset";
+    }
+    else{
+        selectDom.style.bottom = window.innerHeight - pos.top  + "px";
+        selectDom.style.top = "unset";
+    }
+
+    selectDom.style.display = "block";
+
+
+  }
+
+  getTextBeforeCursor(containerEl) {
+      var precedingChar = "", sel, range, precedingRange;
+      if (window.getSelection) {
+          sel = window.getSelection();
+          if (sel.rangeCount > 0) {
+              range = sel.getRangeAt(0).cloneRange();
+              range.collapse(true);
+              range.setStart(containerEl, 0);
+              precedingChar = range.cloneContents();
+          }
+      } else if ((sel = document.selection)) {
+          range = sel.createRange();
+          precedingRange = range.duplicate();
+          precedingRange.moveToElementText(containerEl);
+          precedingRange.setEndPoint("EndToStart", range);
+          precedingChar = precedingRange.htmlText;
+      }
+      return precedingChar;
   }
 
   changebranchtype = (paragraph) => {
@@ -237,19 +363,28 @@ class ParagraphEditor extends Component {
   //小白模式工具栏控制
   changetoolbox = (toolbox, id, chat_id) => {
     const texteditor = this.refs.texteditor;
-    let role = '我';
-    if (toolbox === 'addbusy') {
+    let role = '我', phoneRole = "我";
+    if (toolbox === 'addbusy' || toolbox === 'addphone') {
       for (let i = 0; i < this.props.content.roles.length; i++) {
         if (this.props.content.roles[i].id === chat_id) {
-          role = this.props.content.roles[i].name;
+          if(toolbox === 'addbusy'){
+              role = this.props.content.roles[i].name;
+          }
+          else if(toolbox === 'addphone'){
+              phoneRole = this.props.content.roles[i].name;
+          }
+
           break;
         }
       }
 
     }
+
+
     this.setState({
       toolbox,
       addtxt: {
+          chat_id ,
         role,
         title: '',
         url: '',
@@ -258,7 +393,16 @@ class ParagraphEditor extends Component {
         text: '',
         gallery: '不收集',
         preview: '',
-          type:this.busyType.NOWAIT
+          type:this.busyType.NOWAIT,
+          numbers_name:"",
+          // numbers_value:"",/*原始值*/
+          numbers_operator:"+",
+          numbers_operator_value:"",
+          phoneRole,
+          phoneIntro:"",//电话简介
+          phoneImg:"",//图片
+          phoneProcessArr:[]/*电话过程语音*/
+
       },
       position: { id, index: texteditor.selectionStart },
     });
@@ -281,6 +425,23 @@ class ParagraphEditor extends Component {
 
   changeaddtxttype = (e) => {
     this.setState({ addtxt: { ...this.state.addtxt, type: e.target.value } });
+  }
+
+  changeAddtxtNumberNames = (e)=>{
+
+    const numbers = this.props.content.numbers;
+    let nums = {};
+    Object.keys(numbers).forEach(n => {
+        nums = Object.assign(nums, numbers[n].nums);
+    });
+      this.setState({ addtxt: { ...this.state.addtxt, numbers_name: e.target.value} });
+  }
+
+  changeAddtxtNumberOperators = (e)=>{
+      this.setState({ addtxt: { ...this.state.addtxt, numbers_operator: e.target.value } });
+  }
+    changeAddtxtOperatorValue = (e)=>{
+      this.setState({ addtxt: { ...this.state.addtxt, numbers_operator_value: e.target.value } });
   }
 
   changeaddtxtgallery = (e) => {
@@ -314,6 +475,9 @@ class ParagraphEditor extends Component {
     this.setState({ addtxt: { ...this.state.addtxt, url: e.target.value } });
   }
 
+  changeaddtxtfile = (file) => {
+    this.setState({ addtxt: { ...this.state.addtxt, file } });
+  }
   changeaddtxtimg = (img) => {
     this.setState({ addtxt: { ...this.state.addtxt, img } });
   }
@@ -326,6 +490,69 @@ class ParagraphEditor extends Component {
   changeaddtxtpreview = (preview) => {
     this.setState({ addtxt: { ...this.state.addtxt, preview } });
   }
+
+  /*修改插入电话角色*/
+  changeAddtxtPhoneRole = (e)=>{
+    this.setState({addtxt:{...this.state.addtxt, phoneRole:e.target.value}})
+  }
+
+  /*修改插入电话简介*/
+    changeAddtxtPhoneInfo = (e)=>{
+      let phoneIntro = e.target.value;
+        this.setState({ addtxt: { ...this.state.addtxt, phoneIntro } });
+    }
+
+    /*修改插入电话简介*/
+    changeaddtxtPhoneImg = (path)=>{
+        this.setState({ addtxt: { ...this.state.addtxt, phoneImg:path } });
+    }
+
+  /*修改字幕文字*/
+  changePhoneSubtitle = ( index, e)=>{
+      let subtitle = e.target.value;
+
+      const newState = Immutable.fromJS(this.state).setIn(['addtxt','phoneProcessArr', index, "subtitle"], subtitle).toJS();
+      this.setState(newState);
+
+   }
+
+   /*修改角色*/
+    changePhoneRole = (index, e) =>{
+        let role = e.target.value;
+        const newState = Immutable.fromJS(this.state).setIn(['addtxt','phoneProcessArr', index, "role"], role).toJS();
+        this.setState(newState);
+    }
+   /*修改音频*/
+    changePhoneAudio = (index, path) =>{
+        const newState = Immutable.fromJS(this.state).setIn(['addtxt','phoneProcessArr', index, "audio"], path).toJS();
+        this.setState(newState);
+    }
+
+   /*删除电话过程*/
+    deletePhoneProcess = (index) =>{
+        const newState = Immutable.fromJS(this.state).deleteIn(['addtxt','phoneProcessArr', index]).toJS();
+        this.setState(newState);
+    }
+   /*添加电话过程*/
+    addPhoneProcess = () =>{
+
+      let role = "我";
+        for (let i = 0; i < this.props.content.roles.length; i++) {
+            if (this.props.content.roles[i].id === this.state.addtxt.chat_id) {
+
+                role = this.props.content.roles[i].name;
+                break;
+            }
+        }
+
+        const arr = Immutable.fromJS(this.state).getIn(['addtxt','phoneProcessArr']).push({
+            role ,
+            subtitle:"",
+            img:""
+        });
+        const newState = Immutable.fromJS(this.state).setIn(['addtxt','phoneProcessArr'], arr).toJS();
+        this.setState(newState);
+    }
 
   toaddusername = (currentparagraph) => {
     const elem = this.refs.texteditor;
@@ -374,6 +601,14 @@ class ParagraphEditor extends Component {
         this.props.updateParagraph(paragraph);
         break;
 
+      case 'addfile':
+
+        temptext += '\n\n' + addtxt.file;
+
+        paragraph.text = paragraph.text.substring(0, index) + temptext + paragraph.text.substring(index);
+        paragraph.text = paragraph.text.replace(/\n\n+/g, '\n\n');
+        this.props.updateParagraph(paragraph);
+        break;
       case 'addimg':
         if (addtxt.role === '旁白') {
           temptext += '\n\n';
@@ -462,6 +697,12 @@ class ParagraphEditor extends Component {
         } else {
           temptext += '\n\n@' + addtxt.role + '\n';
         }
+
+        if(addtxt.text.trim().length == 0){
+            setAppMessage('error', '提示内容不能为空！');
+            return;
+        }
+
         temptext += '#忙碌#\n' + addtxt.text + '\n';
         if(addtxt.type == this.busyType.NOWAIT){
             temptext +=  this.busyType.NOWAIT + '\n';
@@ -477,6 +718,75 @@ class ParagraphEditor extends Component {
             temptext +=  this.busyType.WAIT + '\n';
             temptext +=  addtxt.time + '\n';
         }
+
+
+        if (index === 0 || paragraph.text === '') {
+          temptext = temptext.substring(2);
+        }
+        paragraph.text = paragraph.text.substring(0, index) + temptext + paragraph.text.substring(index);
+        paragraph.text = paragraph.text.replace(/\n\n+/g, '\n\n');
+        this.props.updateParagraph(paragraph);
+        break;
+      case 'addnumber':
+        if(!addtxt.numbers_name){
+            setAppMessage('error', '数值名称不能为空！');
+            return;
+        }
+        if(addtxt.numbers_operator_value.trim().length == 0){
+            setAppMessage('error', '数值名称不能为空！');
+            return;
+        }
+        if(parseFloat(addtxt.numbers_operator_value) <= 0){
+            setAppMessage('error', '数值必须为数字且大于0！');
+            return;
+        }
+
+        temptext += '\n\n#数值#\n' ;
+        temptext += addtxt.numbers_name + addtxt.numbers_operator + addtxt.numbers_operator_value + '\n';
+
+
+
+        if (index === 0 || paragraph.text === '') {
+          temptext = temptext.substring(2);
+        }
+        paragraph.text = paragraph.text.substring(0, index) + temptext + paragraph.text.substring(index);
+        paragraph.text = paragraph.text.replace(/\n\n+/g, '\n\n');
+        this.props.updateParagraph(paragraph);
+        break;
+      case 'addphone':
+        if(!addtxt.phoneIntro){
+            setAppMessage('error', '简介不能为空！');
+            return;
+        }
+        if(!addtxt.phoneRole){
+            setAppMessage('error', '插入电话角色不能为空！');
+            return;
+        }
+        if(!addtxt.phoneImg){
+            setAppMessage('error', '图片不能为空！');
+            return;
+        }
+
+
+        temptext += `\n\n@${addtxt.phoneRole}\n` ;
+        temptext += "#电话开始#\n";
+        temptext += addtxt.phoneIntro + '\n';
+        temptext += addtxt.phoneImg + '\n';
+
+        for(let process of addtxt.phoneProcessArr){
+
+            temptext +=  '\n';
+            temptext += '@' +process.role + "\n";
+            if(process.subtitle){
+                temptext += process.subtitle + "\n";
+            }
+            if(process.audio){
+                temptext += process.audio + "\n";
+            }
+        }
+
+          temptext += "\n#电话结束#\n\n";
+
 
 
         if (index === 0 || paragraph.text === '') {
@@ -688,6 +998,29 @@ class ParagraphEditor extends Component {
           </div>
         );
 
+      case 'addfile':
+        debugger;
+            return (
+                <div className="toolbox">
+                    <div className="toolbox-content">
+                        <div className="toolbox-title">插入文件</div>
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td>文件：</td>
+                                <td>
+                                    <FileUpload getuploadurl={this.changeaddtxtfile} src={this.state.addtxt.file}  filetype="file"></FileUpload>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div className="toolbox-footer">
+                            <div className="confirm-yes" onClick={() => this.toaddtxt(currentparagraph)}>确定</div>
+                            <div className="confirm-no" onClick={() => this.changetoolbox('none')}>取消</div>
+                        </div>
+                    </div>
+                </div>
+            );
       case 'addimg':
         return (
           <div className="toolbox">
@@ -698,7 +1031,7 @@ class ParagraphEditor extends Component {
                   <tr>
                     <td>角色：</td>
                     <td>
-                      <select className="form-control" value={this.state.addtxt.role} onChange={this.changeaddtxtrole}>
+                      <select className="form-control" value={this.state.addtxt.role}  onChange={this.changeaddtxtrole}>
                         <option value="旁白">旁白</option>
                         <option value="我">我</option>
                         {rolelist}
@@ -877,11 +1210,11 @@ class ParagraphEditor extends Component {
         return (
           <div className="toolbox">
             <div className="toolbox-content">
-              <div className="toolbox-title">插入忙碌</div>
+              <div className="toolbox-title">插入数值</div>
               <table>
                 <tbody>
                   <tr>
-                    <td>角色：</td>
+                    <td>数值：</td>
                     <td>
                       <select className="form-control" value={this.state.addtxt.role} onChange={this.changeaddtxtrole}>
                         {rolelist}
@@ -899,8 +1232,8 @@ class ParagraphEditor extends Component {
                   <tr>
                       <td>类型：</td>
                       <td>
-                          <input type="radio" value={this.busyType.NOWAIT} defaultChecked={this.state.addtxt.type == this.busyType.NOWAIT} onChange={this.changeaddtxttype} name="type" className="radio-type"></input>{this.busyType.NOWAIT}
-                          <input type="radio" value={this.busyType.WAIT} defaultChecked={this.state.addtxt.type == this.busyType.WAIT}  onChange={this.changeaddtxttype} name="type" className="radio-type"></input>{this.busyType.WAIT}
+                          <input type="radio" value={this.busyType.NOWAIT} defaultChecked={this.state.addtxt.type == this.busyType.NOWAIT} onChange={this.changeaddtxttype.bind(this)} name="type" className="radio-type"></input>{this.busyType.NOWAIT}
+                          <input type="radio" value={this.busyType.WAIT} defaultChecked={this.state.addtxt.type == this.busyType.WAIT}  onChange={this.changeaddtxttype.bind(this)} name="type" className="radio-type"></input>{this.busyType.WAIT}
                       </td>
                   </tr>
                   {
@@ -908,9 +1241,9 @@ class ParagraphEditor extends Component {
                         <tr>
                             <td>等待时间：</td>
                             <td>
-                                <input  className="wait-time"  onChange={this.changeaddtxttime} ref={this.setHoursRef}></input>&nbsp;时&nbsp;&nbsp;
-                                <input    className="wait-time"  onChange={this.changeaddtxttime} ref={this.setMinsRef}></input>&nbsp;分&nbsp;&nbsp;
-                                <input  className="wait-time"  onChange={this.changeaddtxttime} ref={this.setSecsRef}></input>&nbsp;秒&nbsp;&nbsp;
+                                <input  className="wait-time"  onChange={this.changeaddtxttime.bind(this)} ref={this.setHoursRef}></input>&nbsp;时&nbsp;&nbsp;
+                                <input    className="wait-time"  onChange={this.changeaddtxttime.bind(this)} ref={this.setMinsRef}></input>&nbsp;分&nbsp;&nbsp;
+                                <input  className="wait-time"  onChange={this.changeaddtxttime.bind(this)} ref={this.setSecsRef}></input>&nbsp;秒&nbsp;&nbsp;
                             </td>
                         </tr>
                   }
@@ -924,6 +1257,133 @@ class ParagraphEditor extends Component {
             </div>
           </div>
         );
+
+        case 'addnumber':
+
+            const numbers = this.props.content.numbers;
+            let nums = {};
+            Object.keys(numbers).forEach(n => {
+                nums = Object.assign(nums, numbers[n].nums);
+            });
+            const numberitems = Object.keys(nums).map((n, k) => {
+                return (
+                    <option value={n} key={k} >{n}</option>
+                );
+            });
+            return (
+                <div className="toolbox">
+                    <div className="toolbox-content">
+                        <div className="toolbox-title">插入数值</div>
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td>数值名称：</td>
+                                <td>
+                                    <select className="form-control" value={this.state.addtxt.numbers_name} onChange={this.changeAddtxtNumberNames}>
+                                        <option value="" >请选择</option>
+                                        {numberitems}
+                                    </select>
+                                </td>
+                            </tr>
+                            {/*<tr>*/}
+                                {/*<td>原始数值：</td>*/}
+                                {/*<td>*/}
+                                  {/*<label>{this.state.addtxt.numbers_value}</label>*/}
+                                {/*</td>*/}
+                            {/*</tr>*/}
+                            <tr>
+                                <td>操作符：</td>
+                                <td>
+                                    <select className="form-control" value={this.state.addtxt.numbers_operator} onChange={this.changeAddtxtNumberOperators}>
+                                        <option value="+" >+</option>
+                                        <option value="-" >-</option>
+                                        <option value="*" >*</option>
+                                        <option value="/" >/</option>
+                                        <option value="=" >=</option>
+                                    </select>&nbsp;&nbsp;&nbsp;
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>数值：</td>
+                                <td>
+                                    <input className="form-control"  onChange={this.changeAddtxtOperatorValue.bind(this)} ></input>
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                        <div className="toolbox-footer">
+                            <div className="confirm-yes" onClick={() => this.toaddtxt(currentparagraph)}>确定</div>
+                            <div className="confirm-no" onClick={() => this.changetoolbox('none')}>取消</div>
+                        </div>
+                    </div>
+                </div>
+            );
+        case 'addphone':
+            return (
+                <div className="toolbox">
+                    <div className="toolbox-content">
+                        <div className="toolbox-title">插入电话</div>
+                        <div className="middle-content">
+                            <table>
+                                <tbody>
+                                <tr>
+                                    <td>角色：</td>
+                                    <td>
+                                        <select className="form-control" value={this.state.addtxt.phoneRole} onChange={this.changeAddtxtPhoneRole}>
+                                            {rolelist}
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>简介：</td>
+                                    <td>
+                                        <textarea className="form-control" cols="24" rows="2"  value={this.state.addtxt.phoneIntro} onChange={this.changeAddtxtPhoneInfo} ></textarea>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>图片：</td>
+                                    <td>
+                                        <FileUpload getuploadurl={this.changeaddtxtPhoneImg} src={this.state.addtxt.phoneImg} filetype="img1"></FileUpload>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>电话过程：</td>
+                                    <td>
+                                        {
+                                            this.state.addtxt.phoneProcessArr.map((item, index)=>{
+                                                return <PhoneProcess key={index}
+                                                                     rolelist={rolelist}
+                                                                     changePhoneSubtitle={this.changePhoneSubtitle.bind(this, index)}
+                                                                     changePhoneRole={this.changePhoneRole.bind(this, index)}
+                                                                     changePhoneAudio={this.changePhoneAudio.bind(this, index)}
+                                                                     deletePhoneProcess={this.deletePhoneProcess.bind(this, index)}
+                                                                     subtitle={item.subtitle}
+                                                                     audio={item.audio}
+                                                                     role={item.role}/>
+                                            })
+                                        }
+                                        <div className="addoption add-phone" onClick={this.addPhoneProcess.bind(this)}>+添加电话过程</div>
+
+                                    </td>
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                        <div className="toolbox-footer">
+                            <div className="confirm-yes" onClick={() => this.toaddtxt(currentparagraph)}>确定</div>
+                            <div className="confirm-no" onClick={() => this.changetoolbox('none')}>取消</div>
+                        </div>
+                    </div>
+                </div>
+            );
 
       // case 'addpreview':
       //   return (
@@ -948,6 +1408,70 @@ class ParagraphEditor extends Component {
     }
   }
 
+  /*
+  * 根据ihpne图给textArea加注释
+  * @content textarea当前内容
+  * @nodeText iphone当前显示的最顶端的node的内容
+  * */
+  changeTextAreaScroll(content, nodeText){
+      let index = content.indexOf(nodeText);
+
+      if(index != -1){
+          let subStr = content.substr(0, index);
+          let count = subStr.split("\n").length;//根据换行符定位当前是第几行
+          let lineHeight = parseInt(positionUtil._getStyle(this.refs.texteditor, "line-height"));//获取textarea的lineheight
+          this.shouldDispatchScroll = false;//因preview触发的scroll事件，只需要被动调整scrollTop，不需要再触发scroll
+          if(this.editorDiv.scrollTop !== lineHeight * count){
+              this.editorDiv.scrollTo(0, lineHeight * count);
+          }
+
+
+      }
+
+  }
+
+  /*textarea滚动*/
+  editorScrollHandler = (content)=>{
+    if(this.shouldDispatchScroll){
+        let scrollTop = this.editorDiv.scrollTop,
+            lineHeight = parseInt(positionUtil._getStyle(this.refs.texteditor, "line-height")),//获取textarea的lineheight
+            count = Math.ceil(scrollTop / lineHeight);
+        content = content.split("\n");
+        let total = content.length;
+        let scrollTopText = "", curText = "";
+
+        curText = content[count].replace(/\s*/,"");//过滤空串
+
+        /*如果当前有字符，则向上查找*/
+        if(curText){
+            while(content[count] && count !== 0){
+                count--;
+            }
+            if(!content[count]){
+                count++;//定位到非空行
+            }
+
+        }
+        /*空串，则找到后面第一个非空行*/
+        while(!content[count]){
+            count++;//定位到非空行
+        }
+
+        /*向下查找*/
+        while(content[count]){
+            scrollTopText += content[count] + "\n";
+            count++;
+        }
+        scrollTopText = scrollTopText.substr(0, scrollTopText.length - 1)//去掉最后的换行
+        this.setState({
+            scrollTopText
+        })
+    }
+    this.shouldDispatchScroll = true;//重置
+
+
+  }
+
   rendereditor = () => {
     let currentparagraph = null;
     const content = this.props.content;
@@ -960,6 +1484,9 @@ class ParagraphEditor extends Component {
     const rolelist = this.props.content.roles.map((item) => {
       return <option key={item.name} value={item.id}>{item.name}</option>
     });
+    const liRoles = this.props.content.roles.map((item) => {
+        return <li key={item.name} onClick={this.roleClick.bind(this, item.name)}>{item.name}</li>
+    });
     if (!currentparagraph) {
       return null;
     } else {
@@ -968,7 +1495,15 @@ class ParagraphEditor extends Component {
         case 'Node': {
           lineno = this.renderlinno(currentparagraph);
           return (
-            <div className="paragrapheditor" style={{ width: this.state.width }} >
+            <div className="paragrapheditor" style={{ width: this.state.width }}  ref={this.setEditorWrapper} onClick={this.hideRoleTips.bind(this)}>
+                <div className="at-role-menu " id="atRoleMenu">
+                    <ul>
+                        <li key="我" onClick={this.roleClick.bind(this, "我")}>我</li>
+                        {liRoles}
+                    </ul>
+                </div>
+
+
               <table>
                 <tbody>
                   <tr>
@@ -990,20 +1525,39 @@ class ParagraphEditor extends Component {
                 <span className="toolicon fa fa-arrows-h" title="扩展" onClick={this.changewidth}></span>
                 <span className="toolicon fa fa-user" title="插入用户昵称" onClick={() => this.toaddusername(currentparagraph)}></span>
                 <span className="toolicon fa fa-commenting" title="插入对白" onClick={() => this.changetoolbox('addtext', currentparagraph.id)}></span>
+                <span className="toolicon fa fa-upload" title="插入文件" onClick={() => this.changetoolbox('addfile', currentparagraph.id)}></span>
                 <span className="toolicon fa fa-image" title="插入图片" onClick={() => this.changetoolbox('addimg', currentparagraph.id)}></span>
                 <span className="toolicon fa fa-microphone" title="插入语音" onClick={() => this.changetoolbox('addaudio', currentparagraph.id)}></span>
                 <span className="toolicon fa fa-film" title="插入视频" onClick={() => this.changetoolbox('addvideo', currentparagraph.id)}></span>
                 <span className="toolicon fa fa-link" title="插入链接" onClick={() => this.changetoolbox('addlink', currentparagraph.id)}></span>
                 <span className="toolicon fa fa-clock-o" title="插入忙碌" onClick={() => this.changetoolbox('addbusy', currentparagraph.id, currentparagraph.chat_id)}></span>
+                  <span className="toolicon fa fa-sort-numeric-asc" title="数值" onClick={() => this.changetoolbox('addnumber', currentparagraph.id)} ></span>
+                  <span className="toolicon fa fa-phone" title="电话" onClick={() => this.changetoolbox('addphone', currentparagraph.id, currentparagraph.chat_id)} ></span>
                 <span className="toolicon fa fa-eye" title="预览" onClick={this.togglepreview}></span>
                 <span className="toolicon fa fa-edit" title="查看批注" onClick={() => this.togglecomment(currentparagraph.id)} ></span>
+
               </div>
-              <div className="txteditor">
+              <div className="txteditor" ref={this.setEditorDiv} onScroll={LianLianUtil.debounce(this.editorScrollHandler, 300).bind(this, currentparagraph.text)  }>
                 <div style={{ height: lineno.h + 'px' }} className="lineno">{lineno.lineno}</div>
                 <pre className="placeholder">{currentparagraph.text === '' && currentparagraph.id === 1 ? this.state.placeholder : ''}</pre>
-                <textarea ref="texteditor" onDrop={(e) => this.dropFile(e, currentparagraph)} style={{ height: lineno.h + 'px' }} value={currentparagraph.text} onChange={(e) => this.changetext(e, currentparagraph)}></textarea>
+                <textarea ref="texteditor"
+                          onDrop={(e) => this.dropFile(e, currentparagraph)}
+                          style={{ height: lineno.h + 'px' }}
+                          value={currentparagraph.text}
+                          onMouseUp={this.textAreaKeyUpHandler.bind(this, currentparagraph.text)}
+                          onChange={e=>this.changetext(e, currentparagraph)}
+                          onKeyUp={(e)=>this.keyUpHandler( e, currentparagraph )}>
+                </textarea>
+
               </div>
-              {this.state.preview ? <Preview move={this.state.move}></Preview> : null}
+              {
+                  this.state.preview ? <Preview
+                      move={this.state.move}
+                      focusText={this.state.focusText}
+                      scrollTopText={this.state.scrollTopText}
+                      changeTextAreaScroll={this.changeTextAreaScroll.bind(this, currentparagraph.text)}>
+                  </Preview> : null
+              }
               {this.rendercommentbox(currentparagraph)}
               {this.rendertoolbox(currentparagraph)}
             </div>

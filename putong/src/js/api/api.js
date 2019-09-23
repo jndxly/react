@@ -5,8 +5,8 @@ import AppError, { AppErrorCode } from '../Author/sagas/AppError';
 const Api = {
   fetch: function* (url, options) {
     try {
-      // let result = yield call(fetch,  config.remoteHost + url + (url.indexOf('?') === -1 ? ('?timestamp=' + new Date().getTime()) : ('&timestamp=' + new Date().getTime())), options);
-      let result = yield call(fetch,   url + (url.indexOf('?') === -1 ? ('?timestamp=' + new Date().getTime()) : ('&timestamp=' + new Date().getTime())), options);
+      let result = yield call(fetch,  config.remoteHost + url + (url.indexOf('?') === -1 ? ('?timestamp=' + new Date().getTime()) : ('&timestamp=' + new Date().getTime())), options);
+      // let result = yield call(fetch,   url + (url.indexOf('?') === -1 ? ('?timestamp=' + new Date().getTime()) : ('&timestamp=' + new Date().getTime())), options);
 
       if (!result.ok) {
         const error = new AppError(AppErrorCode.NetworkError);

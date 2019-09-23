@@ -1,4 +1,4 @@
-#uploadbox1 {
+.uploadbox1 {
     position: relative;
     display: inline-block;
     width: 120px;
@@ -6,9 +6,10 @@
     margin: 5px 0;
     overflow: hidden;
     vertical-align: middle;
+    background-color: #fff;
 }
 
-#uploadbox1 img {
+.uploadbox1 img {
     position: absolute;
     width: 120px;
     height: 120px;
@@ -20,7 +21,7 @@
     z-index: 3;
 }
 
-#uploadbox2 {
+.uploadbox2 {
     position: relative;
     display: inline-block;
     width: 108px;
@@ -28,9 +29,10 @@
     margin: 5px 0;
     overflow: hidden;
     vertical-align: middle;
+    background-color: #fff;
 }
 
-#uploadbox2 img {
+.uploadbox2 img {
     position: absolute;
     width: 108px;
     height: 192px;

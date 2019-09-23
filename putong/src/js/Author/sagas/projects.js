@@ -138,10 +138,10 @@ function* deleteProject(action) {
     } else {
       const token = yield getToken();
       yield setAppLoading('正在删除剧本...');
-      const result = yield Api.fetch('/v1/project/del', {
+      const result = yield Api.fetch('/myStory/delete', {
         method: 'POST',
         headers: { "Content-Type": "application/json", "Authorization": token },
-        body: JSON.stringify({ project_id: action.id })
+        body: JSON.stringify({ "id": action.id })
       });
       if (result.error === 0) {
         let list = yield getList();
